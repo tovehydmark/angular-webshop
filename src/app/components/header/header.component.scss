@@ -1,12 +1,15 @@
 header {
   margin: 0;
-  background-color: beige;
+  background-color: #f3efeb;
   text-align: center;
+
 
   h1 {
     padding: 1rem;
     margin: 0;
     font-size: 1.5rem;
+    color: #1D1C1C;
+    text-decoration: overline underline;
   }
 }
 
@@ -23,7 +26,7 @@ nav {
 
 
       a {
-        color: black;
+        color: #2D2B2A;
         text-decoration: none;
       }
     }

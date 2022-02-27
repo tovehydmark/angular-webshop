@@ -1,12 +1,11 @@
 <section>
     <ul *ngFor="let m of movies; let i = index">
-        <li>{{m.name}}</li>
     </ul>
 </section>
 
 
-<section>
+<div class="movie-container">
     <app-product *ngFor="let m of movies" [movie]="m">
 
     </app-product>
-</section>
+</div>

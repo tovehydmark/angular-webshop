@@ -1,1 +1,12 @@
-<p>{{productId}}</p>
+<section>
+    <ul *ngFor="let m of movies; let i = index">
+        <li>{{m.name}}</li>
+    </ul>
+</section>
+
+
+<section>
+    <app-product *ngFor="let m of movies" [movie]="m">
+
+    </app-product>
+</section>

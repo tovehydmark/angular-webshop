@@ -11,3 +11,5 @@ export interface IProduct {
     { categoryId: number; category: null }
   ];
 }
+
+//DO I NEED THIS INTERFACE AT ALL??

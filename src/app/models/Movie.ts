@@ -7,7 +7,7 @@ export class Movie {
   price: number;
   imageUrl: string;
   year: number;
-  // added: string;
+  added: string;
   // productCategory: [{ categoryId: number; category: null; }, { categoryId: number; category: null; }];
   constructor(
     id: number,
@@ -23,6 +23,7 @@ export class Movie {
     this.price = price;
     this.imageUrl = imageUrl;
     this.year = year;
-    // this.added
+    this.added = Date(); //IS THIS CORRECT WAY OF WRITING IT??
   }
 }
+//AM I USING THIS FILE??

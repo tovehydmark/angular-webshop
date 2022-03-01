@@ -22,11 +22,11 @@ export class ProductsComponent implements OnInit {
     });
     this.service.getMovies();
 
-    //URL ÄNDRAS OM JAG ÄNDRAR I URL, INTE AV SIG SJÄLV. FIXA
-    this.route.params.subscribe((p) => {
-      console.log(p['id']);
+    // //URL ÄNDRAS OM JAG ÄNDRAR I URL, INTE AV SIG SJÄLV. FIXA
+    // this.route.params.subscribe((p) => {
+    //   console.log(p['id']);
 
-      this.productId = +p['id'];
-    });
+    //   this.productId = +p['id'];
+    // });
   }
 }

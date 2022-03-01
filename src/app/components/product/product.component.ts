@@ -15,15 +15,26 @@ export class ProductComponent implements OnInit {
 
   movieOrder: Movie = new Movie(0, '', '', 0, '', 0);
 
+  //TO COUNT FOR NUMBER OF MOVIES IN BASKET AND IF MULTIPLE MOVIES OF THE SAME
+  moviesInBasket: number = 0;
+
   constructor(private service: OrderService) {}
 
   ngOnInit(): void {}
 
   //SEND TO SERVICE
-  addMovie(newMovie: Movie) {
-    this.movieOrder = newMovie;
-    this.service.addMovie(newMovie);
+  //ADD MOVIE TO BASKET
+  addMovie(choosenMovie: Movie) {
+    let numberOfMovies = this.moviesInBasket++;
 
-    console.log(this.movieOrder);
+    this.movieOrder = choosenMovie;
+    this.service.addMovieToOrder(choosenMovie);
+    console.log(numberOfMovies);
+  }
+
+  //REMOVE MOVIE FROM BASKET
+  removeMovie(i: number) {
+    this.service.removeMovieFromOrder(i);
+    let numberOfMovies = this.moviesInBasket--;
   }
 }

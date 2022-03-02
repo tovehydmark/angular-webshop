@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProduct } from 'src/app/Interfaces.ts/IProduct';
 import { IProducts } from 'src/app/Interfaces.ts/IProducts';
-import { Movie } from 'src/app/models/movie';
+import { Movie } from 'src/app/models/Movie';
+import { MoviesService } from 'src/app/services/movies.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -10,44 +11,29 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  //SENDS DATA TO PRODUCT COMPONENT
-  @Input() movie: Movie = new Movie(0, '', '', 0, '', 0);
+  movieList: Movie[] = [];
 
-  //WITH EVENT EMITTER
-  @Output() movieSelectedEventEmitter = new EventEmitter();
-  @Output() removeMovieEventEmitter = new EventEmitter();
+  newMovie: Movie = new Movie(0, '', '', 0, '', 0);
 
-  movieOrder: Movie = new Movie(0, '', '', 0, '', 0);
+  constructor(private service: MoviesService) {}
 
-  //TO COUNT FOR NUMBER OF MOVIES IN BASKET AND IF MULTIPLE MOVIES OF THE SAME
-  moviesInBasket: number = 0;
-
-  constructor(private service: OrderService) {}
-
-  ngOnInit(): void {}
-
-  //WITH EVENT EMITTER
-  addMovie(selectedMovie: Movie) {
-    this.movieSelectedEventEmitter.emit(selectedMovie);
-  }
-
-  removeMovie(selectedToRemove: Movie) {
-    this.removeMovieEventEmitter.emit(selectedToRemove);
+  ngOnInit(): void {
+    this.service.movies$.subscribe((movieData: Movie[]) => {
+      this.movieList = movieData;
+      console.log(movieData);
+    });
+    this.service.getMovies();
   }
 
   //SEND TO SERVICE
   //ADD MOVIE TO BASKET
-  // addMovie(choosenMovie: Movie) {
-  //   let numberOfMovies = this.moviesInBasket++;
-
-  //   this.movieOrder = choosenMovie;
-  //   this.service.addMovieToOrder(choosenMovie);
-  //   console.log(numberOfMovies);
-  // }
+  addMovie(movie: Movie) {
+    this.service.addMovieFromUser(movie);
+  }
 
   //REMOVE MOVIE FROM BASKET
-  // removeMovie(i: number) {
-  //   this.service.removeMovieFromOrder(i);
-  //   let numberOfMovies = this.moviesInBasket--;
-  // }
+  removeMovie(i: number) {
+    this.service.removeMovieFromUser(i);
+    //  let numberOfMovies = this.moviesInBasket--;
+  }
 }

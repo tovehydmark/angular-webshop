@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/Interfaces.ts/IProduct';
 import { IProducts } from 'src/app/Interfaces.ts/IProducts';
-import { Movie } from 'src/app/models/movie';
+import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -12,9 +12,6 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class ProductsComponent implements OnInit {
   movies: IProducts[] = [];
-  productId: number = 0;
-
-  moviesAddedByUser: IProducts[] = [];
 
   constructor(private service: MoviesService, private route: ActivatedRoute) {}
 
@@ -26,17 +23,12 @@ export class ProductsComponent implements OnInit {
     this.service.getMovies();
   }
 
-  selectedMovieToSell(data: IProducts) {
-    //Datan vi får från API:et
-    this.moviesAddedByUser.push(data);
-    console.log(this.moviesAddedByUser);
+  addMovie(movie: Movie) {
+    this.service.addMovieFromUser(movie);
   }
 
-  selectedMovieToRemove(data: IProducts) {
-    let itemToRemove = delete this.moviesAddedByUser[data.id];
-    console.log(itemToRemove);
-
-    console.log(this.moviesAddedByUser);
+  removeMovie(i: number) {
+    this.service.removeMovieFromUser(i);
   }
 }
 

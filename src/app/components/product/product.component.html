@@ -1,13 +1,13 @@
 <section class="movie-section">
-    <article>
+    <article *ngFor="let movie of movieList; let i = index">
+
         <h2>{{movie.name}}</h2>
         <img class="movieImage" src="{{movie.imageUrl}}" alt="">
         <p>Price: {{movie.price}}:-</p>
 
-        <!-- HÄR BEHÖVS EN KNAPP ELLER SÅ SOM RÄKNAR ANTAL AV VARJE FILM OCH SKICKAR TILL ORDER API / AMOUNT. plus och minusknapp så man kan lägga till och ta bort-->
         <button (click)="addMovie(movie)">Add</button>
-        <p>Number: {{moviesInBasket}}</p>
-        <button (click)="removeMovie(movie)">Remove</button>
+
+        <button (click)="removeMovie(i)">Remove</button>
 
     </article>
 </section>

@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { StartComponent } from './components/start/start.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
-import { AddProductComponent } from './components/add-product/add-product.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -21,7 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     StartComponent,
     ProductsComponent,
     ProductComponent,
-    AddProductComponent,
+
     BasketComponent,
     HeaderComponent,
     FooterComponent,

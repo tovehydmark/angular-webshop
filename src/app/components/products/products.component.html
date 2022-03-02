@@ -7,7 +7,8 @@
 <div class="movie-container">
 
     <!-- SKA MAN HA INDEX HÄR?? -->
-    <app-product *ngFor="let m of movies" [movie]="m" (movieSelectedEventEmitter)="selectedMovieToSell($event)">
+    <app-product *ngFor="let m of movies" [movie]="m" (movieSelectedEventEmitter)="selectedMovieToSell($event)"
+        (removeMovieEventEmitter)="selectedMovieToRemove($event)">
 
     </app-product>
 </div>

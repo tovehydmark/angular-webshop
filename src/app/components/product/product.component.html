@@ -7,7 +7,7 @@
         <!-- HÄR BEHÖVS EN KNAPP ELLER SÅ SOM RÄKNAR ANTAL AV VARJE FILM OCH SKICKAR TILL ORDER API / AMOUNT. plus och minusknapp så man kan lägga till och ta bort-->
         <button (click)="addMovie(movie)">Add</button>
         <p>Number: {{moviesInBasket}}</p>
-        <button (click)="removeMovie(1)">Remove</button>
+        <button (click)="removeMovie(movie)">Remove</button>
 
     </article>
 </section>

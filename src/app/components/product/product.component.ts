@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
 
   //WITH EVENT EMITTER
   @Output() movieSelectedEventEmitter = new EventEmitter();
+  @Output() removeMovieEventEmitter = new EventEmitter();
 
   movieOrder: Movie = new Movie(0, '', '', 0, '', 0);
 
@@ -30,6 +31,10 @@ export class ProductComponent implements OnInit {
     this.movieSelectedEventEmitter.emit(selectedMovie);
   }
 
+  removeMovie(selectedToRemove: Movie) {
+    this.removeMovieEventEmitter.emit(selectedToRemove);
+  }
+
   //SEND TO SERVICE
   //ADD MOVIE TO BASKET
   // addMovie(choosenMovie: Movie) {
@@ -41,8 +46,8 @@ export class ProductComponent implements OnInit {
   // }
 
   //REMOVE MOVIE FROM BASKET
-  removeMovie(i: number) {
-    this.service.removeMovieFromOrder(i);
-    let numberOfMovies = this.moviesInBasket--;
-  }
+  // removeMovie(i: number) {
+  //   this.service.removeMovieFromOrder(i);
+  //   let numberOfMovies = this.moviesInBasket--;
+  // }
 }

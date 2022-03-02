@@ -14,6 +14,9 @@ export class MoviesService {
 
   myOrderList: Movie[] = [];
 
+  private numberInBasket = new Subject<number>();
+  numberInBasket$ = this.numberInBasket.asObservable();
+
   constructor(private http: HttpClient) {}
 
   getMovies(): void {

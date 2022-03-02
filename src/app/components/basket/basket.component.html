@@ -1,4 +1,7 @@
-<h1>Your basket: </h1>
+<h1>Your basket
+
+</h1>
+<p *ngIf="myOrderList.length == 0">Your basket is empty. </p>
 
 <ul>
     <li *ngFor="let m of myOrderList; let i= index">

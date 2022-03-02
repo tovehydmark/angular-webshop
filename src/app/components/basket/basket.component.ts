@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Interfaces.ts/IProduct';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-basket',
@@ -11,7 +12,21 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class BasketComponent implements OnInit {
   myOrderList: Movie[] = [];
 
-  constructor(private service: MoviesService) {}
+  customerDetails = this.fb.group({
+    fName: [''],
+    lName: [''],
+    email: [''],
+    address: [
+      {
+        streetAddress: [''],
+        city: [''],
+        postcode: [''],
+        country: [''],
+      },
+    ],
+  });
+
+  constructor(private service: MoviesService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.service.myOrderList$.subscribe((movieData: Movie[]) => {
@@ -23,5 +38,9 @@ export class BasketComponent implements OnInit {
   removeMovie(i: number) {
     this.myOrderList.splice(i, 1);
     console.log(this.myOrderList);
+  }
+
+  submitOrder() {
+    console.log('ORDER PLACED');
   }
 }

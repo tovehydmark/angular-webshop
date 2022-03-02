@@ -1,8 +1,15 @@
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
 .movie-section {
   width: 250px;
   padding: 10px;
   height: 400px;
-  //Try to center items more
+  //Try to center items better
 }
 
 .movieImage {

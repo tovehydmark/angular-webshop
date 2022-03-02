@@ -1,5 +1,5 @@
-<section class="movie-section">
-    <article *ngFor="let movie of movieList; let i = index">
+<section class="movie-container">
+    <article class="movie-section" *ngFor="let movie of movieList; let i = index">
 
         <h2>{{movie.name}}</h2>
         <img class="movieImage" src="{{movie.imageUrl}}" alt="">

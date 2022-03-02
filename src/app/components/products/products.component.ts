@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/Interfaces.ts/IProduct';
 import { IProducts } from 'src/app/Interfaces.ts/IProducts';
+import { Movie } from 'src/app/models/movie';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -28,5 +29,9 @@ export class ProductsComponent implements OnInit {
 
     //   this.productId = +p['id'];
     // });
+  }
+
+  selectedMovieToSell(data: Movie) {
+    alert(data.name);
   }
 }

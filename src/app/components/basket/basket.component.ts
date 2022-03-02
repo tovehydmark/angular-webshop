@@ -19,4 +19,9 @@ export class BasketComponent implements OnInit {
     });
     // this.service.getMovies();
   }
+
+  removeMovie(i: number) {
+    this.myOrderList.splice(i, 1);
+    console.log(this.myOrderList);
+  }
 }

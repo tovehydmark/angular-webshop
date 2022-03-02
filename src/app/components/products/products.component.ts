@@ -11,30 +11,34 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  movies: IProducts[] = [];
-
-  constructor(private service: MoviesService, private route: ActivatedRoute) {}
-
   ngOnInit(): void {
-    this.service.movies$.subscribe((dataFromService: IProducts[]) => {
-      this.movies = dataFromService;
-      console.log(dataFromService);
-    });
-    this.service.getMovies();
+    throw new Error('Method not implemented.');
   }
+  //   movies: IProducts[] = [];
 
-  addMovie(movie: Movie) {
-    this.service.addMovieFromUser(movie);
-  }
+  //   constructor(private service: MoviesService, private route: ActivatedRoute) {}
 
-  removeMovie(i: number) {
-    this.service.removeMovieFromUser(i);
-  }
+  //   ngOnInit(): void {
+  //     this.service.movies$.subscribe((dataFromService: IProducts[]) => {
+  //       this.movies = dataFromService;
+  //       console.log(dataFromService);
+  //     });
+  //     this.service.getMovies();
+  //   }
+
+  //   addMovie(movie: Movie) {
+  //     this.service.addMovieFromUser(movie);
+  //   }
+
+  //   removeMovie(i: number) {
+  //     this.service.removeMovieFromUser(i);
+  //   }
+  // }
+
+  // //URL ÄNDRAS OM JAG ÄNDRAR I URL, INTE AV SIG SJÄLV. FIXA
+  // this.route.params.subscribe((p) => {
+  //   console.log(p['id']);
+
+  //   this.productId = +p['id'];
+  // });
 }
-
-// //URL ÄNDRAS OM JAG ÄNDRAR I URL, INTE AV SIG SJÄLV. FIXA
-// this.route.params.subscribe((p) => {
-//   console.log(p['id']);
-
-//   this.productId = +p['id'];
-// });

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { IProduct } from '../Interfaces.ts/IProduct';
 import { IProducts } from '../Interfaces.ts/IProducts';
 import { Movie } from '../models/Movie';
@@ -12,7 +12,8 @@ export class MoviesService {
   private movies = new Subject<IProducts[]>();
   movies$ = this.movies.asObservable();
 
-  myOrderList: Movie[] = [];
+  private myOrderList: Movie[] = [];
+  myOrderList$: Observable<Movie[]> = of(this.myOrderList);
 
   private numberInBasket = new Subject<number>();
   numberInBasket$ = this.numberInBasket.asObservable();

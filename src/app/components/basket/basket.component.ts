@@ -8,6 +8,8 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { IUserDetails } from 'src/app/Interfaces.ts/IUserDetails';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-basket',
@@ -17,10 +19,12 @@ import {
 export class BasketComponent implements OnInit {
   myOrderList: Movie[] = [];
 
+  orderForm: IUserDetails[] = [];
+
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
     lName: ['', Validators.required],
-    email: ['', Validators.required, Validators.email],
+    email: ['', Validators.required],
     address: this.fb.group({
       streetAddress: ['', Validators.required],
       city: ['', Validators.required],
@@ -35,7 +39,6 @@ export class BasketComponent implements OnInit {
     this.service.myOrderList$.subscribe((movieData: Movie[]) => {
       this.myOrderList = movieData;
     });
-    // this.service.getMovies();
   }
 
   removeMovie(i: number) {
@@ -43,7 +46,8 @@ export class BasketComponent implements OnInit {
     console.log(this.myOrderList);
   }
 
-  submitOrder() {
+  onSubmit() {
     console.log('ORDER PLACED');
+    console.log(this.customerDetails.value);
   }
 }

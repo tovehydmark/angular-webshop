@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { UserDetails } from 'src/app/models/UserDetails';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-customer-form',
@@ -36,7 +37,7 @@ export class CustomerFormComponent implements OnInit {
     country: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private service: OrderService, private fb: FormBuilder) {}
 
   ngOnInit(): void {}
 

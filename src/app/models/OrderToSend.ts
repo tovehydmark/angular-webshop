@@ -21,7 +21,7 @@ export class OrderToSend {
     this.companyId = 18;
     this.created = new Date();
     this.createdBy = createdBy;
-    this.paymentMethod = 'paypal';
+    this.paymentMethod = 'Paypal';
     this.totalPrice = totalPrice;
     this.status = 0;
     this.orderRows = orderRows;

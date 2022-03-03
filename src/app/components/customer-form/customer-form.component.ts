@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
+
 import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
 import { OrderToSend } from 'src/app/models/OrderToSend';
 import { UserDetails } from 'src/app/models/UserDetails';
@@ -17,6 +19,8 @@ export class CustomerFormComponent implements OnInit {
 
   orderForm: UserDetails[] = [];
 
+  postId: number = 0;
+
   // orderForm$: Observable<UserDetails> = of(this.orderForm);
 
   orderRow: OrderRowsDetails[] = [];
@@ -31,14 +35,13 @@ export class CustomerFormComponent implements OnInit {
     country: ['', Validators.required],
   });
 
-  constructor(private service: OrderService, private fb: FormBuilder) {}
+  constructor(
+    private service: OrderService,
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) {}
 
-  ngOnInit(): void {}
-
-  onSubmit() {
-    this.orderForm = this.customerDetails.value;
-    // console.log(this.orderForm);
-
+  ngOnInit(): void {
     const totalPrice = 100;
     const createdBy = this.orderForm;
     const orderRow = this.orderRow;
@@ -49,7 +52,35 @@ export class CustomerFormComponent implements OnInit {
       orderRow
     );
 
+    console.log(readyOrder);
+
+    this.http
+      .post<OrderToSend>(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+        {
+          readyOrder,
+        }
+      )
+      .subscribe((data) => {
+        console.log('efter anrop: ' + JSON.stringify(data));
+      });
+  }
+
+  onSubmit() {
+    this.orderForm = this.customerDetails.value;
+    // console.log(this.orderForm);
+
+    // const totalPrice = 100;
+    // const createdBy = this.orderForm;
+    // const orderRow = this.orderRow;
+
+    // const readyOrder: OrderToSend = new OrderToSend(
+    //   createdBy,
+    //   totalPrice,
+    //   orderRow
+    // );
+
     //readyOrder here seem to be the right kind of object??
-    console.log(JSON.stringify(readyOrder));
+    // console.log(JSON.stringify(readyOrder));
   }
 }

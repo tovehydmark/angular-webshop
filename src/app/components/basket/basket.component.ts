@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Interfaces.ts/IProduct';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-basket',
@@ -13,14 +18,14 @@ export class BasketComponent implements OnInit {
   myOrderList: Movie[] = [];
 
   customerDetails = this.fb.group({
-    fName: [''],
-    lName: [''],
-    email: [''],
+    fName: ['', Validators.required],
+    lName: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
     address: this.fb.group({
-      streetAddress: [''],
-      city: [''],
-      postcode: [''],
-      country: [''],
+      streetAddress: ['', Validators.required],
+      city: ['', Validators.required],
+      postcode: ['', Validators.required],
+      country: ['', Validators.required],
     }),
   });
 

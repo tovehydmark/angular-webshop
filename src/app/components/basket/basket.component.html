@@ -10,7 +10,8 @@
 
 <hr>
 
-<ng-container *ngIf="myOrderList.length !==0">
+<!-- MOVE TO NG CONTAINER *ngIf="myOrderList.length !==0" -->
+<div class="form-container">
     <form [formGroup]="customerDetails">
 
         <label for="fName">First name: </label>
@@ -39,4 +40,4 @@
 
         <button (submit)="submitOrder()">Place order</button>
     </form>
-</ng-container>
+</div>

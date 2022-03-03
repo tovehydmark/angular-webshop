@@ -13,11 +13,13 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class CustomerFormComponent implements OnInit {
   //Skicka upp updated orderform to service??
-  private orderForm: UserDetails = new UserDetails('', '', '', '', '', '', '');
+  // private orderForm: UserDetails = new UserDetails('', '', '', '', '', '', '');
 
-  orderForm$: Observable<UserDetails> = of(this.orderForm);
+  orderForm: UserDetails[] = [];
 
-  private orderRow: OrderRowsDetails = new OrderRowsDetails(0, '', 0);
+  // orderForm$: Observable<UserDetails> = of(this.orderForm);
+
+  orderRow: OrderRowsDetails[] = [];
 
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
@@ -48,6 +50,6 @@ export class CustomerFormComponent implements OnInit {
     );
 
     //readyOrder here seem to be the right kind of object??
-    console.log(readyOrder);
+    console.log(JSON.stringify(readyOrder));
   }
 }

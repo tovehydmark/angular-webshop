@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IProduct } from 'src/app/Interfaces.ts/IProduct';
+
 import { IProducts } from 'src/app/Interfaces.ts/IProducts';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';

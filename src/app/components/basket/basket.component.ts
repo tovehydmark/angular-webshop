@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/Interfaces.ts/IProduct';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
 import {

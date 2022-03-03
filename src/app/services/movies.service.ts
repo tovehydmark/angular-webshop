@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { IProduct } from '../Interfaces.ts/IProduct';
 import { IProducts } from '../Interfaces.ts/IProducts';
 import { Movie } from '../models/Movie';
 

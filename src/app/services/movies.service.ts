@@ -31,8 +31,6 @@ export class MoviesService {
       });
   }
 
-  //ORDERLISTORNA FUNGERAR EJ SOM DE SKA AV NÅGON ANLEDNING........
-
   addMovieFromUser(movie: Movie) {
     this.myOrderList.push(movie);
     console.log(this.myOrderList);

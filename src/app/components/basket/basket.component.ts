@@ -19,19 +19,15 @@ import { Subject } from 'rxjs';
 export class BasketComponent implements OnInit {
   myOrderList: Movie[] = [];
 
-  orderForm: IUserDetails[] = [];
-
-  // hejhej:IUserDetails = {
-  //   fName:'',
-  //   lName:'',
-  //   email:'',
-  //   address:[
-  //     streetAddress: '',
-  //     city: '',
-  //     postcode:'',
-  //     country:''
-  //   ]
-  // }
+  orderForm: IUserDetails = {
+    fName: '',
+    lName: '',
+    email: '',
+    streetAddress: '',
+    city: '',
+    postcode: '',
+    country: '',
+  };
 
   //Variabel för total price
 
@@ -57,8 +53,6 @@ export class BasketComponent implements OnInit {
     this.myOrderList.splice(i, 1);
     console.log(this.myOrderList);
   }
-
-  //Skicka med orderForm(createdBy), myOrderList (orderRows)
 
   onSubmit() {
     this.orderForm = this.customerDetails.value;

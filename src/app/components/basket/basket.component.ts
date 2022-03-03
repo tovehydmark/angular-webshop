@@ -14,34 +14,7 @@ import { UserDetails } from 'src/app/models/UserDetails';
 export class BasketComponent implements OnInit {
   myOrderList: Movie[] = [];
 
-  // orderForm: IUserDetails = {
-  //   fName: '',
-  //   lName: '',
-  //   email: '',
-  //   streetAddress: '',
-  //   city: '',
-  //   postcode: '',
-  //   country: '',
-  // };
-
-  //Skicka upp updated orderform to service??
-  private orderForm: UserDetails = new UserDetails('', '', '', '', '', '', '');
-
-  orderForm$: Observable<UserDetails> = of(this.orderForm);
-
-  //Variabel för total price
-
-  customerDetails = this.fb.group({
-    fName: ['', Validators.required],
-    lName: ['', Validators.required],
-    email: ['', Validators.required],
-    streetAddress: ['', Validators.required],
-    city: ['', Validators.required],
-    postcode: ['', Validators.required],
-    country: ['', Validators.required],
-  });
-
-  constructor(private service: MoviesService, private fb: FormBuilder) {}
+  constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
     this.service.myOrderList$.subscribe((movieData: Movie[]) => {
@@ -50,14 +23,8 @@ export class BasketComponent implements OnInit {
   }
 
   //TO ENABLE TO REMOVE MOVIES FROM BASKET
-  // removeMovie(i: number) {
-  //   this.myOrderList.splice(i, 1);
-  //   console.log(this.myOrderList);
-  // }
-  removeMovie(i: number) {}
-
-  onSubmit() {
-    this.orderForm = this.customerDetails.value;
-    console.log(this.orderForm);
+  removeMovie(i: number) {
+    this.myOrderList.splice(i, 1);
+    console.log(this.myOrderList);
   }
 }

@@ -4,17 +4,11 @@ export class OrderRowsDetails {
   product: string;
   amount: number;
   orderId: number;
-  constructor(
-    id: number,
-    productId: number,
-    product: string,
-    amount: number,
-    orderId: number
-  ) {
-    this.id = id;
+  constructor(productId: number, product: string, amount: number) {
+    this.id = Number();
     this.productId = productId;
     this.product = product;
     this.amount = amount;
-    this.orderId = orderId;
+    this.orderId = Number();
   }
 }

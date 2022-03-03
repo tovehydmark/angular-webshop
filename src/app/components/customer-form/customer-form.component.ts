@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
+import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
+import { OrderToSend } from 'src/app/models/OrderToSend';
 import { UserDetails } from 'src/app/models/UserDetails';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -15,17 +17,7 @@ export class CustomerFormComponent implements OnInit {
 
   orderForm$: Observable<UserDetails> = of(this.orderForm);
 
-  //Variabel för total price
-
-  // orderForm: IUserDetails = {
-  //   fName: '',
-  //   lName: '',
-  //   email: '',
-  //   streetAddress: '',
-  //   city: '',
-  //   postcode: '',
-  //   country: '',
-  // };
+  private orderRow: OrderRowsDetails = new OrderRowsDetails(0, '', 0);
 
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
@@ -43,6 +35,19 @@ export class CustomerFormComponent implements OnInit {
 
   onSubmit() {
     this.orderForm = this.customerDetails.value;
-    console.log(this.orderForm);
+    // console.log(this.orderForm);
+
+    const totalPrice = 100;
+    const createdBy = this.orderForm;
+    const orderRow = this.orderRow;
+
+    const readyOrder: OrderToSend = new OrderToSend(
+      createdBy,
+      totalPrice,
+      orderRow
+    );
+
+    //readyOrder here seem to be the right kind of object??
+    console.log(readyOrder);
   }
 }

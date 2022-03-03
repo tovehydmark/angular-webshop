@@ -21,16 +21,28 @@ export class BasketComponent implements OnInit {
 
   orderForm: IUserDetails[] = [];
 
+  // hejhej:IUserDetails = {
+  //   fName:'',
+  //   lName:'',
+  //   email:'',
+  //   address:[
+  //     streetAddress: '',
+  //     city: '',
+  //     postcode:'',
+  //     country:''
+  //   ]
+  // }
+
+  //Variabel för total price
+
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
     lName: ['', Validators.required],
     email: ['', Validators.required],
-    address: this.fb.group({
-      streetAddress: ['', Validators.required],
-      city: ['', Validators.required],
-      postcode: ['', Validators.required],
-      country: ['', Validators.required],
-    }),
+    streetAddress: ['', Validators.required],
+    city: ['', Validators.required],
+    postcode: ['', Validators.required],
+    country: ['', Validators.required],
   });
 
   constructor(private service: MoviesService, private fb: FormBuilder) {}
@@ -46,8 +58,10 @@ export class BasketComponent implements OnInit {
     console.log(this.myOrderList);
   }
 
+  //Skicka med orderForm(createdBy), myOrderList (orderRows)
+
   onSubmit() {
-    console.log('ORDER PLACED');
-    console.log(this.customerDetails.value);
+    this.orderForm = this.customerDetails.value;
+    console.log(this.orderForm);
   }
 }

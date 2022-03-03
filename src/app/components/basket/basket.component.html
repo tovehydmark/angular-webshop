@@ -22,17 +22,20 @@
         <label for="email">Email: </label>
         <input type="email" formControlName="email" id="email">
 
-        <label for="streetAddress">Street address: </label>
-        <input type="text" formControlName="streetAddress" id="streetAddress">
+        <div formGroupName="address">
 
-        <label for="city">City: </label>
-        <input type="text" formControlName="city" id="city">
+            <label for="streetAddress">Street address: </label>
+            <input type="text" formControlName="streetAddress" id="streetAddress">
 
-        <label for="postcode">Postcode: </label>
-        <input type="text" formControlName="postcode" id="postcode">
+            <label for="city">City: </label>
+            <input type="text" formControlName="city" id="city">
 
-        <label for="country">Country: </label>
-        <input type="text" formControlName="country" id="country">
+            <label for="postcode">Postcode: </label>
+            <input type="text" formControlName="postcode" id="postcode">
+
+            <label for="country">Country: </label>
+            <input type="text" formControlName="country" id="country">
+        </div>
 
         <button (submit)="submitOrder()">Place order</button>
     </form>

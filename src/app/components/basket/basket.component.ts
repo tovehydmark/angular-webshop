@@ -16,14 +16,12 @@ export class BasketComponent implements OnInit {
     fName: [''],
     lName: [''],
     email: [''],
-    address: [
-      {
-        streetAddress: [''],
-        city: [''],
-        postcode: [''],
-        country: [''],
-      },
-    ],
+    address: this.fb.group({
+      streetAddress: [''],
+      city: [''],
+      postcode: [''],
+      country: [''],
+    }),
   });
 
   constructor(private service: MoviesService, private fb: FormBuilder) {}

@@ -12,10 +12,11 @@
 
 <!-- MOVE TO NG CONTAINER *ngIf="myOrderList.length !==0" -->
 <div class="form-container">
-    <form [formGroup]="customerDetails">
+    <form (ngSubmit)="onSubmit()" [formGroup]="customerDetails">
 
         <label for="fName">First name: </label>
         <input type="text" formControlName="fName" id="fName">
+        <!-- <p *ngIf="customerDetails.get('fName')?.errors?.['required']">*Mandatory field</p> -->
 
         <label for="lName">Surname: </label>
         <input type="text" formControlName="lName" id="lName">
@@ -38,6 +39,6 @@
             <input type="text" formControlName="country" id="country">
         </div>
 
-        <button (submit)="submitOrder()">Place order</button>
+        <button type="submit">Place order</button>
     </form>
 </div>

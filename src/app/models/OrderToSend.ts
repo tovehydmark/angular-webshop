@@ -18,7 +18,7 @@ export class OrderToSend {
     totalPrice: number,
     orderRows: OrderRowsDetails[]
   ) {
-    this.id = Number();
+    this.id = 0;
     this.companyId = 18;
     this.created = new Date(new Date().toString().split('GMT')[0] + ' UTC')
       .toISOString()

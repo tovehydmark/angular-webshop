@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
@@ -41,7 +41,9 @@ export class CustomerFormComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  test() {
     const totalPrice = 100;
     const createdBy = this.orderForm;
     const orderRow = this.orderRow;
@@ -54,20 +56,39 @@ export class CustomerFormComponent implements OnInit {
 
     console.log(readyOrder);
 
-    this.http
-      .post<OrderToSend>(
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('', 'application/json');
+    return this.http
+      .post(
         'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
-        {
-          readyOrder,
-        }
+
+        { readyOrder, headers: httpHeaders }
       )
-      .subscribe((data) => {
-        console.log('efter anrop: ' + JSON.stringify(data));
+      .subscribe((result) => {
+        console.log(result);
       });
+
+    // const headers = { 'content-type': 'application/json' };
+    // const body = JSON.stringify(readyOrder);
+
+    // this.http
+    //   .post<OrderToSend>(
+    //     'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+
+    //     {
+    //       body: body,
+    //       headers: headers,
+    //       responseType: 'text',
+    //     }
+    //   )
+    //   .subscribe((data) => {
+    //     console.log('efter anrop: ' + JSON.stringify(data));
+    //   });
   }
 
   onSubmit() {
     this.orderForm = this.customerDetails.value;
+    this.test();
     // console.log(this.orderForm);
 
     // const totalPrice = 100;

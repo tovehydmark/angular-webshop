@@ -11,8 +11,11 @@ export class MoviesService {
   private movies = new Subject<IProducts[]>();
   movies$ = this.movies.asObservable();
 
+  //OrderRows?? OrderrowsDetails??
   private myOrderList: Movie[] = [];
   myOrderList$: Observable<Movie[]> = of(this.myOrderList);
+
+  //CustomerForm
 
   constructor(private http: HttpClient) {}
 

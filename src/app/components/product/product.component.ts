@@ -14,7 +14,6 @@ export class ProductComponent implements OnInit {
   movieList: Movie[] = [];
 
   newMovie: Movie = new Movie(0, '', '', 0, '', 0);
-  //numberInBasket = 0;
 
   constructor(private service: MoviesService) {}
 
@@ -24,22 +23,13 @@ export class ProductComponent implements OnInit {
       console.log(movieData);
     });
     this.service.getMovies();
-
-    // this.service.numberInBasket$.subscribe((numberData: number) => {
-    //   this.numberInBasket = numberData;
-    // });
   }
 
-  //SEND TO SERVICE
-  //ADD MOVIE TO BASKET
   addMovie(movie: Movie) {
     this.service.addMovieFromUser(movie);
-    // this.numberInBasket++;
   }
 
-  //REMOVE MOVIE FROM BASKET
   removeMovie(i: number) {
     this.service.removeMovieFromUser(i);
-    // this.numberInBasket--;
   }
 }

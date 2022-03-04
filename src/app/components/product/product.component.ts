@@ -35,10 +35,17 @@ export class ProductComponent implements OnInit {
   addMovie(movie: Movie) {
     this.orderList.push(movie);
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
+    this.saveToLS();
     //this.service.addMovieFromUser(movie);
   }
 
   removeMovie(i: number) {
-    this.service.removeMovieFromUser(i);
+    this.orderList.splice(i);
+    this.saveToLS();
+    //  this.service.removeMovieFromUser(i);
+  }
+
+  saveToLS() {
+    localStorage.setItem('orderList', JSON.stringify(this.orderList));
   }
 }

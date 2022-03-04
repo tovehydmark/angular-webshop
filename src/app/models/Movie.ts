@@ -26,4 +26,3 @@ export class Movie {
     this.added = Date(); //IS THIS CORRECT WAY OF WRITING IT??
   }
 }
-//AM I USING THIS FILE??

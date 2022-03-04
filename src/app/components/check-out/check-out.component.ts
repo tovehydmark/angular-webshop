@@ -24,11 +24,11 @@ export class CheckOutComponent implements OnInit {
   //VARIABLE FOR TOTAL PRICE (totalprice:number)
 
   //VARIABLE FOR ORDERROWS (orderRows:OrderRowsDetails[])
+
   orderRowsTest() {
     let orderRows = new OrderRowsDetails(this.productId, 0); //NOLLAN HÄR SKA VARA ANTAL AV VARAN!!
+    console.log(orderRows); //HÄR BLIR PRODUKT-ID RÄTT MEN NUMBER() I KLASSEN GENERERAR INTE NÅGOT ID...
   }
-
-  // orderReadyToSend: OrderToSend = new OrderToSend()
 
   constructor() {}
 
@@ -36,8 +36,15 @@ export class CheckOutComponent implements OnInit {
     //GET LIST OF ORDERS FROM LS
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
-    console.log('HÄR' + JSON.stringify(this.orderList));
+    //console.log('HÄR' + JSON.stringify(this.orderList));
 
+    //GET USERDETAILS FROM LS ???
+
+    this.orderRowsTest();
+  }
+
+  //TO EXTRACT PRODUCTID AND PRICE
+  getInfoFromMovie() {
     for (let i = 0; i < this.orderList.length; i++) {
       //GETS THE PRODUCT-ID
       this.productId = this.orderList[i].id;
@@ -47,8 +54,6 @@ export class CheckOutComponent implements OnInit {
       this.moviePrice = this.orderList[i].price;
       //console.log(this.moviePrice);
     }
-
-    //GET USERDETAILS FROM LS ???
   }
 
   confirmOrder() {

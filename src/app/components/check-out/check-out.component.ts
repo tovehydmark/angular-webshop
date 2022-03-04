@@ -39,6 +39,9 @@ export class CheckOutComponent implements OnInit {
     //console.log('HÄR' + JSON.stringify(this.orderList));
 
     //GET USERDETAILS FROM LS ???
+    let createdBy: string = localStorage.getItem('userDetails') || '[]';
+    this.createdBy = JSON.parse(createdBy);
+    console.log('CreatedBy:' + JSON.stringify(createdBy));
 
     this.orderRowsTest();
   }

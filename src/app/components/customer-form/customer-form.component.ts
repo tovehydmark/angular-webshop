@@ -88,7 +88,7 @@ export class CustomerFormComponent implements OnInit {
 
   onSubmit() {
     this.orderForm = this.customerDetails.value;
-    this.test();
+    //this.test();
     // console.log(this.orderForm);
 
     // const totalPrice = 100;

@@ -13,20 +13,29 @@ import { OrderService } from 'src/app/services/order.service';
 export class ProductComponent implements OnInit {
   movieList: Movie[] = [];
 
-  newMovie: Movie = new Movie(0, '', '', 0, '', 0);
+  orderList: Movie[] = [];
+
+  //newMovie: Movie = new Movie(0, '', '', 0, '', 0);
 
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
+    //SUBSCRIBES TO THE MOVIE DATA FROM API
     this.service.movies$.subscribe((movieData: Movie[]) => {
       this.movieList = movieData;
-      console.log(movieData);
     });
+    //FETCHES THE MOVIES VIA SERVICE
     this.service.getMovies();
+
+    //LOCAL STORAGE
+    let orderList: string = localStorage.getItem('orderList') || '[]';
+    this.orderList = JSON.parse(orderList);
   }
 
   addMovie(movie: Movie) {
-    this.service.addMovieFromUser(movie);
+    this.orderList.push(movie);
+    localStorage.setItem('orderList', JSON.stringify(this.orderList));
+    //this.service.addMovieFromUser(movie);
   }
 
   removeMovie(i: number) {

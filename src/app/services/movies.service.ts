@@ -8,6 +8,7 @@ import { Movie } from '../models/Movie';
   providedIn: 'root',
 })
 export class MoviesService {
+  //MOVIE DATA FROM THE API
   private movies = new Subject<IProducts[]>();
   movies$ = this.movies.asObservable();
 

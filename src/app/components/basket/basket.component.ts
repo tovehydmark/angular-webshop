@@ -8,19 +8,24 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./basket.component.scss'],
 })
 export class BasketComponent implements OnInit {
+  //myOrderList: Movie[] = [];
+
   myOrderList: Movie[] = [];
 
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
-    this.service.myOrderList$.subscribe((movieData: Movie[]) => {
-      this.myOrderList = movieData;
-    });
+    let orderList: string = localStorage.getItem('orderList') || '[]';
+    this.myOrderList = JSON.parse(orderList);
+
+    // this.service.myOrderList$.subscribe((movieData: Movie[]) => {
+    //   this.myOrderList = movieData;
+    // });
   }
 
   //TO ENABLE TO REMOVE MOVIES FROM BASKET
   removeMovie(i: number) {
     this.myOrderList.splice(i, 1);
-    console.log(this.myOrderList);
+    localStorage.setItem('orderList', JSON.stringify(this.myOrderList));
   }
 }

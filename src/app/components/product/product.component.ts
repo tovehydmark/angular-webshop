@@ -40,7 +40,7 @@ export class ProductComponent implements OnInit {
   }
 
   removeMovie(i: number) {
-    this.orderList.splice(i);
+    this.orderList.splice(i, 1);
     this.saveToLS();
     //  this.service.removeMovieFromUser(i);
   }

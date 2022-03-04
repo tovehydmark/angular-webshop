@@ -14,16 +14,12 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./customer-form.component.scss'],
 })
 export class CustomerFormComponent implements OnInit {
-  //Skicka upp updated orderform to service??
-  // private orderForm: UserDetails = new UserDetails('', '', '', '', '', '', '');
-
   orderForm: UserDetails[] = [];
 
-  postId: number = 0;
-
-  // orderForm$: Observable<UserDetails> = of(this.orderForm);
-
   orderRow: OrderRowsDetails[] = [];
+
+  //SAME AS IN LOCAL STORAGE
+  userDetails: UserDetails[] = [];
 
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
@@ -41,7 +37,17 @@ export class CustomerFormComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let userDetails: string = localStorage.getItem('userDetails') || '[]';
+    this.userDetails = JSON.parse(userDetails);
+  }
+  //SAVE USERDETAILS TO LS
+  saveUserDetailsToLS() {
+    localStorage.setItem(
+      'userDetails',
+      JSON.stringify(this.customerDetails.value)
+    );
+  }
 
   test() {
     const totalPrice = 100;

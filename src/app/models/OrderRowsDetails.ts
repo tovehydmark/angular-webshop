@@ -1,13 +1,13 @@
 export class OrderRowsDetails {
   id: number;
   productId: number;
-  product: string;
+  product: null;
   amount: number;
   orderId: number;
-  constructor(productId: number, product: string, amount: number) {
+  constructor(productId: number, amount: number) {
     this.id = Number();
     this.productId = productId;
-    this.product = product;
+    this.product = null;
     this.amount = amount;
     this.orderId = Number();
   }

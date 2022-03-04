@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
+import { OrderToSend } from 'src/app/models/OrderToSend';
+import { UserDetails } from 'src/app/models/UserDetails';
 
 @Component({
   selector: 'app-check-out',
@@ -14,6 +17,18 @@ export class CheckOutComponent implements OnInit {
 
   //VARIABLE FROM MOVIE: FIND PRICE
   moviePrice: number = 0;
+
+  //VARIABLE FOR CUSTOMER (createdBy:UserDetails[])
+  createdBy: UserDetails[] = [];
+
+  //VARIABLE FOR TOTAL PRICE (totalprice:number)
+
+  //VARIABLE FOR ORDERROWS (orderRows:OrderRowsDetails[])
+  orderRowsTest() {
+    let orderRows = new OrderRowsDetails(this.productId, 0); //NOLLAN HÄR SKA VARA ANTAL AV VARAN!!
+  }
+
+  // orderReadyToSend: OrderToSend = new OrderToSend()
 
   constructor() {}
 
@@ -32,6 +47,8 @@ export class CheckOutComponent implements OnInit {
       this.moviePrice = this.orderList[i].price;
       //console.log(this.moviePrice);
     }
+
+    //GET USERDETAILS FROM LS ???
   }
 
   confirmOrder() {

@@ -5,6 +5,7 @@ import { Movie } from 'src/app/models/Movie';
 import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
 import { OrderToSend } from 'src/app/models/OrderToSend';
 import { UserDetails } from 'src/app/models/UserDetails';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-check-out',
@@ -45,7 +46,7 @@ export class CheckOutComponent implements OnInit {
     this.orderRowsList
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private service: OrderService) {}
 
   ngOnInit(): void {
     let orderList: string = localStorage.getItem('orderList') || '[]';
@@ -70,18 +71,18 @@ export class CheckOutComponent implements OnInit {
   }
 
   sendOrder(orderToSend: OrderToSend) {
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('', 'aplication/json');
-
-    return this.http
-      .post(
-        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
-        orderToSend,
-        { headers: httpHeaders }
-      )
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.service.confirmOrder(orderToSend);
+    // const httpHeaders = new HttpHeaders();
+    // httpHeaders.append('', 'aplication/json');
+    // return this.http
+    //   .post(
+    //     'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+    //     orderToSend,
+    //     { headers: httpHeaders }
+    //   )
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //   });
   }
 
   confirmOrder() {

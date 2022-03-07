@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { Movie } from '../models/Movie';
@@ -17,5 +17,18 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  confirmOrder() {}
+  confirmOrder(orderToSend: OrderToSend) {
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('', 'aplication/json');
+
+    return this.http
+      .post(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+        orderToSend,
+        { headers: httpHeaders }
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
 }

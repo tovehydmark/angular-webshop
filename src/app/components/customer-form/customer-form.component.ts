@@ -54,25 +54,25 @@ export class CustomerFormComponent implements OnInit {
     const createdBy = this.orderForm;
     const orderRow = this.orderRow;
 
-    const readyOrder: OrderToSend = new OrderToSend(
-      createdBy,
-      totalPrice,
-      orderRow
-    );
+    // const readyOrder: OrderToSend = new OrderToSend(
+    //   createdBy,
+    //   totalPrice,
+    //   orderRow
+    // );
 
-    console.log(readyOrder);
+    //console.log(readyOrder);
 
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('', 'application/json');
-    return this.http
-      .post(
-        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+    // const httpHeaders = new HttpHeaders();
+    // httpHeaders.append('', 'application/json');
+    // return this.http
+    //   .post(
+    //     'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
 
-        { readyOrder, headers: httpHeaders }
-      )
-      .subscribe((result) => {
-        console.log(result);
-      });
+    //     { readyOrder, headers: httpHeaders }
+    //   )
+    //   .subscribe((result) => {
+    //     console.log(result);
+    //   });
 
     // const headers = { 'content-type': 'application/json' };
     // const body = JSON.stringify(readyOrder);

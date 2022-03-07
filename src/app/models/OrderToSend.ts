@@ -5,20 +5,20 @@ import { OrderRowsDetails } from './OrderRowsDetails';
 import { UserDetails } from './UserDetails';
 
 export class OrderToSend {
-  id: Number;
+  id: number;
   companyId: number;
   created: string;
-  createdBy: UserDetails[];
+  createdBy: string; //UserDetails;
   paymentMethod: string;
   totalPrice: number;
   status: number;
   orderRows: OrderRowsDetails[];
   constructor(
-    createdBy: UserDetails[],
+    createdBy: string, //UserDetails,
     totalPrice: number,
     orderRows: OrderRowsDetails[]
   ) {
-    this.id = 0;
+    this.id = Number();
     this.companyId = 18;
     this.created = new Date(new Date().toString().split('GMT')[0] + ' UTC')
       .toISOString()

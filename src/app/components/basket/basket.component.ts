@@ -17,10 +17,9 @@ export class BasketComponent implements OnInit {
   ngOnInit(): void {
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.myOrderList = JSON.parse(orderList);
+    // console.log(orderList);
 
-    // this.service.myOrderList$.subscribe((movieData: Movie[]) => {
-    //   this.myOrderList = movieData;
-    // });
+    //SET ORDERROWS TO LS
   }
 
   //TO ENABLE TO REMOVE MOVIES FROM BASKET

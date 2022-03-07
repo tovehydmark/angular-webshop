@@ -4,7 +4,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
 import { StartComponent } from './components/start/start.component';
 
 const routes: Routes = [

@@ -1,5 +1,3 @@
-import { IProducts } from '../Interfaces.ts/IProducts';
-
 export class Movie {
   id: number;
   name: string;

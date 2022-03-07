@@ -25,4 +25,8 @@ export class AdminComponent implements OnInit {
     this.service.getOrders();
     console.log(this.orderData);
   }
+
+  removeOrder(orderToDelete: number) {
+    this.service.deleteOrder(orderToDelete);
+  }
 }

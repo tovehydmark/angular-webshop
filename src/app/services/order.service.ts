@@ -11,9 +11,6 @@ export class OrderService {
   private orderToSend = new Subject<OrderToSend>();
   orderToSend$ = this.orderToSend.asObservable();
 
-  // private fetchedOrders: OrderToSend[] = [];
-  // fetchedOrders$: Observable<OrderToSend[]> = of(this.fetchedOrders)
-
   private fetchedOrders = new Subject<IMyOrders[]>();
   fetchedOrders$ = this.fetchedOrders.asObservable();
 
@@ -44,6 +41,18 @@ export class OrderService {
       .subscribe((response: IMyOrders[]) => {
         this.fetchedOrders.next(response);
         console.log(response);
+      });
+  }
+
+  deleteOrder(orderToDelete: number) {
+    this.http
+      .delete(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders/' +
+          orderToDelete +
+          '?companyId=18'
+      )
+      .subscribe(() => {
+        console.log(orderToDelete);
       });
   }
 }

@@ -1,7 +1,9 @@
 <section>
     <div *ngFor="let order of orderData">
-        <h1>{{order.id}}</h1>
-    </div>
+        <h1>Order id: {{order.id}}</h1>
+        <p></p>
 
+        <button (click)="removeOrder(this.order.id)">Remove</button>
+    </div>
 
 </section>

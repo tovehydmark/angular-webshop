@@ -20,6 +20,10 @@ export class AdminComponent implements OnInit {
     orderRows: [],
   };
 
+  //Man ska kunna titta på ordrarna
+
+  //Man ska kunna ta bort ordrarna (dvs använda sig av delete??) genom att trycka på en knapp
+
   constructor(private service: OrderService) {}
 
   ngOnInit(): void {

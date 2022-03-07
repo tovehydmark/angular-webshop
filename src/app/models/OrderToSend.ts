@@ -1,8 +1,4 @@
-import { DatePipe } from '@angular/common';
-import { IOrderRowsDetails } from '../Interfaces.ts/IOrderRowsDetails';
-import { IUserDetails } from '../Interfaces.ts/IUserDetails';
 import { OrderRowsDetails } from './OrderRowsDetails';
-import { UserDetails } from './UserDetails';
 
 export class OrderToSend {
   id: number;

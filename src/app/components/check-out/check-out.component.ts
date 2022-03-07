@@ -56,21 +56,11 @@ export class CheckOutComponent implements OnInit {
     this.orderRowsList
   );
 
-  getOrderRows() {
-    let orderRows = new OrderRowsDetails(this.productId, this.amount);
-    //    console.log('orderRows ' + JSON.stringify(orderRows));
-    //HÄR BLIR PRODUKT-ID RÄTT MEN NUMBER() I KLASSEN GENERERAR INTE NÅGOT ID...
-  }
-
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    //GET LIST OF ORDERS FROM LS
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
-    //console.log('HÄR' + JSON.stringify(this.orderList));
-
-    // console.log('CreatedBy:' + JSON.stringify(createdBy));
 
     this.getInfoFromMovie();
   }
@@ -83,20 +73,14 @@ export class CheckOutComponent implements OnInit {
 
   //TO EXTRACT PRODUCTID AND PRICE
   getInfoFromMovie() {
-    //  console.log(this.orderList);
-
     for (let i = 0; i < this.orderList.length; i++) {
-      // PRODUCT-ID
       this.productId = this.orderList[i].id;
 
       let orderRows = new OrderRowsDetails(this.productId, this.amount);
       this.orderRowsList.push(orderRows);
-      console.log(orderRows);
 
-      // PRICE OF ALL MOVIES IN BASKET TOGEHER
       this.totalMoviePrice = this.totalMoviePrice + this.orderList[i].price;
     }
-    console.log(this.orderRowsList);
   }
 
   sendOrder(orderToSend: OrderToSend) {
@@ -115,30 +99,10 @@ export class CheckOutComponent implements OnInit {
   }
 
   confirmOrder() {
-    //console.log(this.orderRowsList);
     this.getUserDetails();
-    this.getOrderRows();
+    // this.getOrderRows();
     this.sendOrder(this.orderToSend);
 
     console.log('Innan post: ' + JSON.stringify(this.orderToSend));
-
-    //POST HERE
-
-    // const headers = { 'content-type': 'application/json' };
-    // const body = JSON.stringify(this.orderToSend);
-
-    // this.http
-    //   .post<OrderToSend>(
-    //     'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
-
-    //     {
-    //       body: body,
-    //       headers: headers,
-    //       responseType: 'text',
-    //     }
-    //   )
-    //   .subscribe((data) => {
-    //     console.log('efter anrop: ' + JSON.stringify(data));
-    //   });
   }
 }

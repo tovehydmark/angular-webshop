@@ -12,22 +12,28 @@ import { UserDetails } from 'src/app/models/UserDetails';
 })
 export class CheckOutComponent implements OnInit {
   orderList: Movie[] = [];
-  //VARIABLE FROM MOVIE: ID (TO USE FOR PRODUCT ID)
+
+  //VARIABLE FROM MOVIE: ID (TO USE FOR PRODUCT ID
+  //IN ORDERROWS)
   productId: number = 0;
 
-  //VARIABLE FROM MOVIE: FIND PRICE
-  moviePrice: number = 0;
+  //AMOUNT OF SAME MOVIE FOR ORDERROWSDETAILS
+  amount: number = 1;
 
   //VARIABLE FOR CUSTOMER (createdBy:UserDetails[])
   createdBy: UserDetails[] = [];
 
   //VARIABLE FOR TOTAL PRICE (totalprice:number)
+  totalMoviePrice: number = 0;
 
   //VARIABLE FOR ORDERROWS (orderRows:OrderRowsDetails[])
+  // orderRows = new OrderRowsDetails(this.productId, this.amount);
+  orderRows: OrderRowsDetails[] = [];
 
-  orderRowsTest() {
-    let orderRows = new OrderRowsDetails(this.productId, 0); //NOLLAN HÄR SKA VARA ANTAL AV VARAN!!
-    console.log(orderRows); //HÄR BLIR PRODUKT-ID RÄTT MEN NUMBER() I KLASSEN GENERERAR INTE NÅGOT ID...
+  getOrderRows() {
+    let orderRows = new OrderRowsDetails(this.productId, this.amount);
+    console.log('orderRows ' + JSON.stringify(orderRows));
+    //HÄR BLIR PRODUKT-ID RÄTT MEN NUMBER() I KLASSEN GENERERAR INTE NÅGOT ID...
   }
 
   constructor() {}
@@ -43,23 +49,29 @@ export class CheckOutComponent implements OnInit {
     this.createdBy = JSON.parse(createdBy);
     console.log('CreatedBy:' + JSON.stringify(createdBy));
 
-    this.orderRowsTest();
+    this.getInfoFromMovie();
+
+    //GET ORDERROWS FROM LS
   }
 
   //TO EXTRACT PRODUCTID AND PRICE
   getInfoFromMovie() {
-    for (let i = 0; i < this.orderList.length; i++) {
-      //GETS THE PRODUCT-ID
-      this.productId = this.orderList[i].id;
-      //console.log(this.productId);
+    console.log(this.orderList);
 
-      //GETS THE MOVIE PRICE
-      this.moviePrice = this.orderList[i].price;
-      //console.log(this.moviePrice);
+    for (let i = 0; i < this.orderList.length; i++) {
+      // PRODUCT-ID
+      this.productId = this.orderList[i].id;
+
+      // PRICE OF ALL MOVIES IN BASKET TOGEHER
+      this.totalMoviePrice = this.totalMoviePrice + this.orderList[i].price;
     }
   }
 
   confirmOrder() {
+    console.log(this.orderRows);
+
+    this.getOrderRows();
+
     //POST HERE
   }
 }

@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
 import { OrderToSend } from 'src/app/models/OrderToSend';
@@ -99,29 +99,46 @@ export class CheckOutComponent implements OnInit {
     console.log(this.orderRowsList);
   }
 
+  sendOrder(orderToSend: OrderToSend) {
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('', 'aplication/json');
+
+    return this.http
+      .post(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+        orderToSend,
+        { headers: httpHeaders }
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
+
   confirmOrder() {
     //console.log(this.orderRowsList);
     this.getUserDetails();
     this.getOrderRows();
+    this.sendOrder(this.orderToSend);
 
     console.log('Innan post: ' + JSON.stringify(this.orderToSend));
 
     //POST HERE
-    const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(this.orderToSend);
 
-    this.http
-      .post<OrderToSend>(
-        'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+    // const headers = { 'content-type': 'application/json' };
+    // const body = JSON.stringify(this.orderToSend);
 
-        {
-          body: body,
-          headers: headers,
-          responseType: 'text',
-        }
-      )
-      .subscribe((data) => {
-        console.log('efter anrop: ' + JSON.stringify(data));
-      });
+    // this.http
+    //   .post<OrderToSend>(
+    //     'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+
+    //     {
+    //       body: body,
+    //       headers: headers,
+    //       responseType: 'text',
+    //     }
+    //   )
+    //   .subscribe((data) => {
+    //     console.log('efter anrop: ' + JSON.stringify(data));
+    //   });
   }
 }

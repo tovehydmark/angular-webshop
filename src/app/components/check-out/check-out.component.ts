@@ -41,7 +41,7 @@ export class CheckOutComponent implements OnInit {
   //   this.postcode,
   //   this.country
   // );
-  createdByTest: string = 'Tove';
+  createdByTest: string = '';
 
   //VARIABLE FOR TOTAL PRICE (totalprice:number)
   totalMoviePrice: number = 0;
@@ -67,8 +67,8 @@ export class CheckOutComponent implements OnInit {
 
   getUserDetails() {
     let createdBy: string = localStorage.getItem('userDetails') || '[]';
-    this.createdByTest = JSON.parse(createdBy);
-    console.log(createdBy);
+
+    this.createdByTest = createdBy;
   }
 
   //TO EXTRACT PRODUCTID AND PRICE
@@ -84,6 +84,9 @@ export class CheckOutComponent implements OnInit {
   }
 
   sendOrder(orderToSend: OrderToSend) {
+    this.getUserDetails();
+    console.log(this.createdByTest);
+
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('', 'aplication/json');
 

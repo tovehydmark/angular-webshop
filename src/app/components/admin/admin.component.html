@@ -1,9 +1,14 @@
 <section>
     <div *ngFor="let order of orderData">
         <h1>Order id: {{order.id}}</h1>
-        <p></p>
+        <p>Created: {{order.created}}</p>
+        <p>Customer details: {{order.createdBy}}</p>
+        <p>Payment method: {{order.paymentMethod}}</p>
+        <p>Total price: {{order.totalPrice}}</p>
+        <!-- <p *ngFor="let orderDetail of orderDetails"></p> -->
 
         <button (click)="removeOrder(this.order.id)">Remove</button>
+        <hr>
     </div>
 
 </section>

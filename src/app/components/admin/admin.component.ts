@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { IMyOrders } from 'src/app/Interfaces.ts/IMyOrders';
-import { OrderToSend } from 'src/app/models/OrderToSend';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -12,10 +10,6 @@ import { OrderService } from 'src/app/services/order.service';
 export class AdminComponent implements OnInit {
   orderData: IMyOrders[] = [];
 
-  //Man ska kunna titta på ordrarna
-
-  //Man ska kunna ta bort ordrarna (dvs använda sig av delete??) genom att trycka på en knapp
-
   constructor(private service: OrderService) {}
 
   ngOnInit(): void {
@@ -23,8 +17,9 @@ export class AdminComponent implements OnInit {
       this.orderData = orderData;
     });
     this.service.getOrders();
-    console.log(this.orderData);
   }
+
+  //MUST GET ORDERROWDETAILS IN HERE TOO
 
   removeOrder(orderToDelete: number) {
     this.service.deleteOrder(orderToDelete);

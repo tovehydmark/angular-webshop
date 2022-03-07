@@ -4,11 +4,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductComponent } from './components/product/product.component';
-import { StartComponent } from './components/start/start.component';
 
 const routes: Routes = [
-  { path: '', component: StartComponent },
-  { path: 'products', component: ProductComponent },
+  { path: '', component: ProductComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'admin', component: AdminComponent },
   { path: '**', component: NotFoundComponent },

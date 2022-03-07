@@ -67,11 +67,12 @@ export class CheckOutComponent implements OnInit {
       this.orderRowsList.push(orderRows);
 
       this.totalMoviePrice = this.totalMoviePrice + this.orderList[i].price;
+      console.log(this.totalMoviePrice); //Här uppdateras priset
     }
   }
 
   sendOrder(orderToSend: OrderToSend) {
-    this.service.confirmOrder(orderToSend);
+    //  this.service.confirmOrder(orderToSend);
     // const httpHeaders = new HttpHeaders();
     // httpHeaders.append('', 'aplication/json');
     // return this.http
@@ -88,7 +89,6 @@ export class CheckOutComponent implements OnInit {
   confirmOrder() {
     this.getUserDetails();
     this.getInfoFromMovie();
-
     this.sendOrder(this.orderToSend);
   }
 }

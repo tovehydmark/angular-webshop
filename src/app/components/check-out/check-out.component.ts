@@ -14,15 +14,9 @@ import { UserDetails } from 'src/app/models/UserDetails';
 export class CheckOutComponent implements OnInit {
   orderList: Movie[] = [];
 
-  //VARIABLE FROM MOVIE: ID (TO USE FOR PRODUCT ID
-  //IN ORDERROWS)
   productId: number = 0;
 
-  //AMOUNT OF SAME MOVIE FOR ORDERROWSDETAILS
   amount: number = 1;
-
-  //VARIABLE FOR CUSTOMER (createdBy:UserDetails[])
-  // createdBy: UserDetails[] = [];
 
   firstName: string = 'tove';
   lastName: string = 'hydmark';
@@ -42,12 +36,7 @@ export class CheckOutComponent implements OnInit {
   //   this.country
   // );
   createdByTest: string = '';
-
-  //VARIABLE FOR TOTAL PRICE (totalprice:number)
   totalMoviePrice: number = 0;
-
-  //VARIABLE FOR ORDERROWS (orderRows:OrderRowsDetails[])
-  // orderRows = new OrderRowsDetails(this.productId, this.amount);
   orderRowsList: OrderRowsDetails[] = [];
 
   orderToSend: OrderToSend = new OrderToSend(
@@ -61,17 +50,14 @@ export class CheckOutComponent implements OnInit {
   ngOnInit(): void {
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
-
-    this.getInfoFromMovie();
   }
 
   getUserDetails() {
     let createdBy: string = localStorage.getItem('userDetails') || '[]';
-
     this.createdByTest = createdBy;
   }
 
-  //TO EXTRACT PRODUCTID AND PRICE
+  //TO GET PRODUCTID AND PRICE
   getInfoFromMovie() {
     for (let i = 0; i < this.orderList.length; i++) {
       this.productId = this.orderList[i].id;
@@ -84,9 +70,6 @@ export class CheckOutComponent implements OnInit {
   }
 
   sendOrder(orderToSend: OrderToSend) {
-    this.getUserDetails();
-    console.log(this.createdByTest);
-
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('', 'aplication/json');
 
@@ -103,9 +86,8 @@ export class CheckOutComponent implements OnInit {
 
   confirmOrder() {
     this.getUserDetails();
-    // this.getOrderRows();
-    this.sendOrder(this.orderToSend);
+    this.getInfoFromMovie();
 
-    console.log('Innan post: ' + JSON.stringify(this.orderToSend));
+    this.sendOrder(this.orderToSend);
   }
 }

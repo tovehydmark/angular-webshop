@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { Movie } from '../models/Movie';
@@ -13,4 +14,8 @@ export class OrderService {
   //Hämta orderlist från
   //Hämta userInfo från customer-form
   //Skicka ready-order till api:et med post
+
+  constructor(private http: HttpClient) {}
+
+  confirmOrder() {}
 }

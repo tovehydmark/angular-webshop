@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { IMyOrders } from 'src/app/Interfaces.ts/IMyOrders';
 import { OrderToSend } from 'src/app/models/OrderToSend';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -9,16 +10,7 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  orderData: OrderToSend = {
-    id: 0,
-    companyId: 0,
-    created: '',
-    createdBy: '',
-    paymentMethod: '',
-    totalPrice: 0,
-    status: 0,
-    orderRows: [],
-  };
+  orderData: IMyOrders[] = [];
 
   //Man ska kunna titta på ordrarna
 
@@ -27,7 +19,7 @@ export class AdminComponent implements OnInit {
   constructor(private service: OrderService) {}
 
   ngOnInit(): void {
-    this.service.fetchedOrders$.subscribe((orderData: OrderToSend) => {
+    this.service.fetchedOrders$.subscribe((orderData: IMyOrders[]) => {
       this.orderData = orderData;
     });
     this.service.getOrders();

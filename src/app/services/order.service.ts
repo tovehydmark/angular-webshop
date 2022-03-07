@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
+import { IMyOrders } from '../Interfaces.ts/IMyOrders';
 import { OrderToSend } from '../models/OrderToSend';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class OrderService {
   // private fetchedOrders: OrderToSend[] = [];
   // fetchedOrders$: Observable<OrderToSend[]> = of(this.fetchedOrders)
 
-  private fetchedOrders = new Subject<OrderToSend>();
+  private fetchedOrders = new Subject<IMyOrders[]>();
   fetchedOrders$ = this.fetchedOrders.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -37,10 +38,10 @@ export class OrderService {
   //FETCH ORDERS FROM ORDER API
   getOrders(): void {
     this.http
-      .get<OrderToSend>(
+      .get<IMyOrders[]>(
         'https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=18'
       )
-      .subscribe((response: OrderToSend) => {
+      .subscribe((response: IMyOrders[]) => {
         this.fetchedOrders.next(response);
         console.log(response);
       });

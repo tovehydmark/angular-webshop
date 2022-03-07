@@ -8,13 +8,13 @@ export class OrderToSend {
   id: number;
   companyId: number;
   created: string;
-  createdBy: string; //UserDetails;
+  createdBy: string;
   paymentMethod: string;
   totalPrice: number;
   status: number;
   orderRows: OrderRowsDetails[];
   constructor(
-    createdBy: string, //UserDetails,
+    createdBy: string,
     totalPrice: number,
     orderRows: OrderRowsDetails[]
   ) {

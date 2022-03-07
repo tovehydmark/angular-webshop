@@ -1,10 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
 import { OrderToSend } from 'src/app/models/OrderToSend';
-import { UserDetails } from 'src/app/models/UserDetails';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -72,18 +70,7 @@ export class CheckOutComponent implements OnInit {
   }
 
   sendOrder(orderToSend: OrderToSend) {
-    //  this.service.confirmOrder(orderToSend);
-    // const httpHeaders = new HttpHeaders();
-    // httpHeaders.append('', 'aplication/json');
-    // return this.http
-    //   .post(
-    //     'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
-    //     orderToSend,
-    //     { headers: httpHeaders }
-    //   )
-    //   .subscribe((data) => {
-    //     console.log(data);
-    //   });
+    //this.service.confirmOrder(orderToSend);
   }
 
   confirmOrder() {

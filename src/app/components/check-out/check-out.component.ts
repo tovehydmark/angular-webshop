@@ -57,15 +57,7 @@ export class CheckOutComponent implements OnInit {
     );
   }
 
-  orderToSend: OrderToSend = new OrderToSend(
-    '',
-    0,
-    this.orderRowsList
-    // this.customerDetails.value.fName,
-    // // this.createdByTest, //om jag consolloggar denna får den rätt värde men det skickas en tom sträng
-    // this.totalMoviePrice, //samma med denna
-    // this.orderRowsList
-  );
+  orderToSend: OrderToSend = new OrderToSend('', 0, this.orderRowsList);
 
   constructor(
     private http: HttpClient,
@@ -76,14 +68,6 @@ export class CheckOutComponent implements OnInit {
   ngOnInit(): void {
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
-
-    // let userDetails: string = localStorage.getItem('userDetails') || '[]';
-    // this.orderForm = JSON.parse(userDetails);
-  }
-
-  getUserDetails() {
-    let createdBy: string = localStorage.getItem('userDetails') || '[]';
-    this.createdByTest = createdBy; //Här hämtar jag user details och det blir rätt
   }
 
   getInfoFromMovie() {
@@ -101,12 +85,6 @@ export class CheckOutComponent implements OnInit {
     this.service.confirmOrder(orderToSend);
   }
 
-  confirmOrder() {
-    this.getUserDetails();
-    this.getInfoFromMovie();
-    this.sendOrder(this.orderToSend);
-  }
-
   onSubmit() {
     this.testForOrderData();
     this.getInfoFromMovie();
@@ -116,27 +94,6 @@ export class CheckOutComponent implements OnInit {
       this.totalMoviePrice,
       this.orderRowsList
     );
+    this.sendOrder(this.orderToSend);
   }
-
-  //   this.orderForm = this.customerDetails.value;
-  //   localStorage.setItem('userDetails', JSON.stringify(this.orderForm));
-  // }
 }
-
-// createdByTest: UserDetails = new UserDetails(
-//   this.firstName,
-//   this.lastName,
-//   this.email,
-//   this.streetAddress,
-//   this.city,
-//   this.postcode,
-//   this.country
-// );
-
-// firstName: string = 'tove';
-// lastName: string = 'hydmark';
-// email: string = 'tovehydmark@gmail.com';
-// streetAddress: string = '49 dryburgh';
-// city: string = 'London';
-// postcode: string = 'SW151BN';
-// country: string = 'UK';

@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Movie } from 'src/app/models/Movie';
 import { OrderRowsDetails } from 'src/app/models/OrderRowsDetails';
 import { OrderToSend } from 'src/app/models/OrderToSend';
+import { UserDetails } from 'src/app/models/UserDetails';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -27,11 +29,30 @@ export class CheckOutComponent implements OnInit {
     this.orderRowsList
   );
 
-  constructor(private http: HttpClient, private service: OrderService) {}
+  orderForm: UserDetails[] = [];
+
+  customerDetails = this.fb.group({
+    fName: ['', Validators.required],
+    lName: ['', Validators.required],
+    email: ['', Validators.required],
+    streetAddress: ['', Validators.required],
+    city: ['', Validators.required],
+    postcode: ['', Validators.required],
+    country: ['', Validators.required],
+  });
+
+  constructor(
+    private http: HttpClient,
+    private service: OrderService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
+
+    let userDetails: string = localStorage.getItem('userDetails') || '[]';
+    this.orderForm = JSON.parse(userDetails);
   }
 
   getUserDetails() {
@@ -62,6 +83,11 @@ export class CheckOutComponent implements OnInit {
     this.getUserDetails();
     this.getInfoFromMovie();
     this.sendOrder(this.orderToSend);
+  }
+
+  onSubmit() {
+    this.orderForm = this.customerDetails.value;
+    localStorage.setItem('userDetails', JSON.stringify(this.orderForm));
   }
 }
 

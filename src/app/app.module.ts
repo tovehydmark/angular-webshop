@@ -12,7 +12,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CustomerFormComponent } from './components/customer-form/customer-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { CustomerFormComponent } from './components/customer-form/customer-form.
     CheckOutComponent,
     AdminComponent,
     NotFoundComponent,
-    CustomerFormComponent,
   ],
   imports: [
     BrowserModule,

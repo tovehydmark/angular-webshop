@@ -16,8 +16,6 @@ export class AdminComponent implements OnInit {
     this.getOrderList();
   }
 
-  //MUST GET ORDERROWDETAILS IN HERE TOO
-
   //VARFÖR MÅSTE JAG DUBBELKLICKA FÖR ATT DEN SKA UPPDATERAS?
   removeOrder(orderToDelete: number) {
     this.service.deleteOrder(orderToDelete);

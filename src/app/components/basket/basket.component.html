@@ -1,16 +1,18 @@
 <h1>Your basket</h1>
 <p *ngIf="myOrderList.length == 0">Your basket is empty.</p>
 
-<ul>
+<ul *ngIf="myOrderList.length !==0">
     <li *ngFor="let m of myOrderList; let i = index">
         {{ m.name }}
         <button (click)="removeMovie(i)">X</button>
     </li>
+
+    <button (click)="goToCheckout()">Go to check-out</button>
 </ul>
 
 <hr>
 
-<!-- MOVE TO NG CONTAINER *ngIf="myOrderList.length !==0" -->
-<app-customer-form>
+
+<app-customer-form *ngIf="inCheckOut">
 
 </app-customer-form>

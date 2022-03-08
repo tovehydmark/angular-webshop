@@ -10,6 +10,8 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class BasketComponent implements OnInit {
   myOrderList: Movie[] = [];
 
+  inCheckOut: boolean = false;
+
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
@@ -20,5 +22,9 @@ export class BasketComponent implements OnInit {
   removeMovie(i: number) {
     this.myOrderList.splice(i, 1);
     localStorage.setItem('orderList', JSON.stringify(this.myOrderList));
+  }
+
+  goToCheckout() {
+    this.inCheckOut = true;
   }
 }

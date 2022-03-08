@@ -11,36 +11,19 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./check-out.component.scss'],
 })
 export class CheckOutComponent implements OnInit {
+  //GET ORDERLIST TO RETRIEVE PRODUCT ID AND AMOUNT, TO PUT IN ORDERROWSDETAILS + TOTAL COST
   orderList: Movie[] = [];
 
   productId: number = 0;
-
   amount: number = 1;
 
-  firstName: string = 'tove';
-  lastName: string = 'hydmark';
-  email: string = 'tovehydmark@gmail.com';
-  streetAddress: string = '49 dryburgh';
-  city: string = 'London';
-  postcode: string = 'SW151BN';
-  country: string = 'UK';
-
-  // createdByTest: UserDetails = new UserDetails(
-  //   this.firstName,
-  //   this.lastName,
-  //   this.email,
-  //   this.streetAddress,
-  //   this.city,
-  //   this.postcode,
-  //   this.country
-  // );
   createdByTest: string = '';
   totalMoviePrice: number = 0;
   orderRowsList: OrderRowsDetails[] = [];
 
   orderToSend: OrderToSend = new OrderToSend(
-    this.createdByTest,
-    this.totalMoviePrice,
+    this.createdByTest, //om jag consolloggar denna får den rätt värde men det skickas en tom sträng
+    this.totalMoviePrice, //samma med denna
     this.orderRowsList
   );
 
@@ -53,7 +36,9 @@ export class CheckOutComponent implements OnInit {
 
   getUserDetails() {
     let createdBy: string = localStorage.getItem('userDetails') || '[]';
-    this.createdByTest = createdBy;
+    this.createdByTest = createdBy; //Här hämtar jag user details och det blir rätt
+
+    console.log(this.createdByTest);
   }
 
   //TO GET PRODUCTID AND PRICE
@@ -79,3 +64,21 @@ export class CheckOutComponent implements OnInit {
     this.sendOrder(this.orderToSend);
   }
 }
+
+// createdByTest: UserDetails = new UserDetails(
+//   this.firstName,
+//   this.lastName,
+//   this.email,
+//   this.streetAddress,
+//   this.city,
+//   this.postcode,
+//   this.country
+// );
+
+// firstName: string = 'tove';
+// lastName: string = 'hydmark';
+// email: string = 'tovehydmark@gmail.com';
+// streetAddress: string = '49 dryburgh';
+// city: string = 'London';
+// postcode: string = 'SW151BN';
+// country: string = 'UK';

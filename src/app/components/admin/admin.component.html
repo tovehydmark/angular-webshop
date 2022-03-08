@@ -6,9 +6,10 @@
         <p>Payment method: {{order.paymentMethod}}</p>
         <p>Total price: {{order.totalPrice}}</p>
 
-        <p>Product id: {{order.orderRows[i].productId}}</p>
-        <p>Amount: {{order.orderRows[i].amount}}</p>
+        <div *ngFor="let o of order.orderRows">
+            <p>Product id: {{o.productId}}, amount: {{o.amount}}</p>
 
+        </div>
 
         <button (click)="removeOrder(this.order.id)">Remove</button>
         <hr>

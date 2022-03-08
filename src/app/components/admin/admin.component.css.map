@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,OAAO,AAAC,CACN,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,cAAc,CAAE,KAAK,CACtB",
     "sources": [
         "admin.component.scss"
     ],

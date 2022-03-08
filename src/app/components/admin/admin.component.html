@@ -1,11 +1,14 @@
 <section>
-    <div *ngFor="let order of orderData">
+    <div *ngFor="let order of orderData; let i = index">
         <h1>Order id: {{order.id}}</h1>
         <p>Created: {{order.created}}</p>
         <p>Customer details: {{order.createdBy}}</p>
         <p>Payment method: {{order.paymentMethod}}</p>
         <p>Total price: {{order.totalPrice}}</p>
-        <!-- <p *ngFor="let orderDetail of orderDetails"></p> -->
+
+        <p>Product id: {{order.orderRows[i].productId}}</p>
+        <p>Amount: {{order.orderRows[i].amount}}</p>
+
 
         <button (click)="removeOrder(this.order.id)">Remove</button>
         <hr>

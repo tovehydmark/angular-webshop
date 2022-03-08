@@ -40,7 +40,6 @@ export class OrderService {
       )
       .subscribe((response: IMyOrders[]) => {
         this.fetchedOrders.next(response);
-        //console.log(response);
       });
   }
 
@@ -51,8 +50,6 @@ export class OrderService {
           orderToDelete +
           '?companyId=18'
       )
-      .subscribe(() => {
-        //   console.log(orderToDelete);
-      });
+      .subscribe(() => {});
   }
 }

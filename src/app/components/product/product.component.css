@@ -1,2 +1,2 @@
-.movie-container{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-pack:distribute;justify-content:space-around}.movie-section{width:250px;padding:10px;height:400px}.movieImage{width:200px}
+.movie-container{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:10px;margin-bottom:60px}.movie-container h2{font-size:1.2rem}.movie-section{width:250px;padding:20px 10px;height:45 00px;border:2px dashed #828080;border-radius:10px;margin:10px}.movieImage{width:200px}
 /*# sourceMappingURL=product.component.css.map */

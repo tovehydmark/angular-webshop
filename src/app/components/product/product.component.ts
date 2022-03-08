@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategories } from 'src/app/Interfaces.ts/ICategories';
 
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -13,6 +14,8 @@ export class ProductComponent implements OnInit {
 
   orderList: Movie[] = [];
 
+  categoriesList: ICategories[] = [];
+
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
@@ -20,6 +23,12 @@ export class ProductComponent implements OnInit {
       this.movieList = movieData;
     });
     this.service.getMovies();
+
+    this.service.categoriesList$.subscribe((categoriesData: ICategories[]) => {
+      this.categoriesList = categoriesData;
+      console.log(categoriesData);
+    });
+    this.service.getCategories();
 
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);

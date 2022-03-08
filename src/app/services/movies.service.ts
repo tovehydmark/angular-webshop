@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
+import { ICategories } from '../Interfaces.ts/ICategories';
 import { IProducts } from '../Interfaces.ts/IProducts';
 import { Movie } from '../models/Movie';
 
@@ -13,6 +14,9 @@ export class MoviesService {
 
   private myOrderList: Movie[] = [];
   myOrderList$: Observable<Movie[]> = of(this.myOrderList);
+
+  private categoriesList = new Subject<ICategories[]>();
+  categoriesList$ = this.categoriesList.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -32,5 +36,15 @@ export class MoviesService {
 
   removeMovieFromUser(i: number) {
     this.myOrderList.splice(i, 1);
+  }
+
+  getCategories(): void {
+    this.http
+      .get<ICategories[]>(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/categories'
+      )
+      .subscribe((response: ICategories[]) => {
+        this.categoriesList.next(response);
+      });
   }
 }

@@ -13,7 +13,6 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./check-out.component.scss'],
 })
 export class CheckOutComponent implements OnInit {
-  //GET ORDERLIST TO RETRIEVE PRODUCT ID AND AMOUNT, TO PUT IN ORDERROWSDETAILS + TOTAL COST
   orderList: Movie[] = [];
   orderForm: UserDetails[] = [];
 
@@ -110,10 +109,11 @@ export class CheckOutComponent implements OnInit {
 
   onSubmit() {
     this.testForOrderData();
+    this.getInfoFromMovie();
 
     this.orderToSend = new OrderToSend(
       this.customerDetailsTest.fName,
-      0,
+      this.totalMoviePrice,
       this.orderRowsList
     );
   }

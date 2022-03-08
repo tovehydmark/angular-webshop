@@ -70,7 +70,7 @@ export class CheckOutComponent implements OnInit {
   }
 
   sendOrder(orderToSend: OrderToSend) {
-    //this.service.confirmOrder(orderToSend);
+    this.service.confirmOrder(orderToSend);
   }
 
   confirmOrder() {

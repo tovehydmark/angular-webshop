@@ -1,5 +1,5 @@
 <section>
-    <div *ngFor="let order of orderData; let i = index">
+    <div *ngFor="let order of orderData; let i = index" class="orderLayout">
         <h1>Order id: {{order.id}}</h1>
         <p>Created: {{order.created}}</p>
         <p>Customer details: {{order.createdBy}}</p>
@@ -12,7 +12,7 @@
         </div>
 
         <button (click)="removeOrder(this.order.id)">Remove</button>
-        <hr>
+
     </div>
 
 </section>

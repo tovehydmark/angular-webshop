@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="!inCheckOut">
     <div>
         <h1>Your basket</h1>
         <p *ngIf="myOrderList.length == 0">Your basket is empty.</p>

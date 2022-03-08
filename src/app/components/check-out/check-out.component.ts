@@ -90,5 +90,9 @@ export class CheckOutComponent implements OnInit {
       this.orderRowsList
     );
     this.service.confirmOrder(this.orderToSend);
+
+    //Empty order list
+    this.orderList = [];
+    localStorage.setItem('orderList', JSON.stringify(this.orderList));
   }
 }

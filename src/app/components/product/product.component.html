@@ -1,3 +1,11 @@
+<section class="categories">
+    <ul>
+        <li *ngFor="let category of categoriesList" (click)="showCategory(category.id)">
+            {{category.name}}
+        </li>
+    </ul>
+</section>
+
 <section class="movie-container">
     <article class="movie-section" *ngFor="let movie of movieList; let i = index">
 

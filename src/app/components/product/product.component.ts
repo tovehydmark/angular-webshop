@@ -16,6 +16,8 @@ export class ProductComponent implements OnInit {
 
   categoriesList: ICategories[] = [];
 
+  movieIdList: number[] = [];
+
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
@@ -47,5 +49,15 @@ export class ProductComponent implements OnInit {
 
   saveToLS() {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
+  }
+
+  showCategory(chosenCategory: number) {
+    this.movieIdList = [];
+
+    for (let i = 0; i < this.movieList.length; i++) {
+      chosenCategory = this.movieList[i].id;
+      this.movieIdList.push(chosenCategory);
+      console.log(this.movieIdList);
+    }
   }
 }

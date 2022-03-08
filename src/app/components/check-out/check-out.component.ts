@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Movie } from 'src/app/models/Movie';
@@ -14,16 +13,16 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class CheckOutComponent implements OnInit {
   orderList: Movie[] = [];
-  orderForm: UserDetails[] = [];
 
-  productId: number = 0;
-  amount: number = 1;
+  //FIXA DESSA SÅ DE STÄMMER
+  productId: number = 0; //ProductId works
 
-  createdByTest: string = '';
+  amount: number = 0;
+
   totalMoviePrice: number = 0;
   orderRowsList: OrderRowsDetails[] = [];
 
-  customerDetailsTest: UserDetails = {
+  userDetails: UserDetails = {
     fName: '',
     lName: '',
     email: '',
@@ -46,7 +45,7 @@ export class CheckOutComponent implements OnInit {
   testForOrderData() {
     const customerDetailsFromForm = this.customerDetails.value;
 
-    this.customerDetailsTest = new UserDetails(
+    this.userDetails = new UserDetails(
       customerDetailsFromForm.fName,
       customerDetailsFromForm.lName,
       customerDetailsFromForm.email,
@@ -59,11 +58,7 @@ export class CheckOutComponent implements OnInit {
 
   orderToSend: OrderToSend = new OrderToSend('', 0, this.orderRowsList);
 
-  constructor(
-    private http: HttpClient,
-    private service: OrderService,
-    private fb: FormBuilder
-  ) {}
+  constructor(private service: OrderService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     let orderList: string = localStorage.getItem('orderList') || '[]';
@@ -71,6 +66,10 @@ export class CheckOutComponent implements OnInit {
   }
 
   getInfoFromMovie() {
+    // let variable = this.orderList.filter((movie) => {
+    //   console.log(movie.id);
+    // });
+
     for (let i = 0; i < this.orderList.length; i++) {
       this.productId = this.orderList[i].id;
 
@@ -81,19 +80,15 @@ export class CheckOutComponent implements OnInit {
     }
   }
 
-  sendOrder(orderToSend: OrderToSend) {
-    this.service.confirmOrder(orderToSend);
-  }
-
   onSubmit() {
     this.testForOrderData();
     this.getInfoFromMovie();
 
     this.orderToSend = new OrderToSend(
-      this.customerDetailsTest.fName,
+      this.userDetails.fName,
       this.totalMoviePrice,
       this.orderRowsList
     );
-    this.sendOrder(this.orderToSend);
+    this.service.confirmOrder(this.orderToSend);
   }
 }

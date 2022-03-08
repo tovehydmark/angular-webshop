@@ -8,15 +8,11 @@ import { Movie } from '../models/Movie';
   providedIn: 'root',
 })
 export class MoviesService {
-  //MOVIE DATA FROM THE API
   private movies = new Subject<IProducts[]>();
   movies$ = this.movies.asObservable();
 
-  //OrderRows?? OrderrowsDetails??
   private myOrderList: Movie[] = [];
   myOrderList$: Observable<Movie[]> = of(this.myOrderList);
-
-  //CustomerForm
 
   constructor(private http: HttpClient) {}
 
@@ -27,17 +23,14 @@ export class MoviesService {
       )
       .subscribe((response: IProducts[]) => {
         this.movies.next(response);
-        console.log(response);
       });
   }
 
   addMovieFromUser(movie: Movie) {
     this.myOrderList.push(movie);
-    console.log(this.myOrderList);
   }
 
   removeMovieFromUser(i: number) {
     this.myOrderList.splice(i, 1);
-    console.log(this.myOrderList);
   }
 }

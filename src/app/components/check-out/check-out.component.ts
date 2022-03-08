@@ -15,6 +15,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class CheckOutComponent implements OnInit {
   //GET ORDERLIST TO RETRIEVE PRODUCT ID AND AMOUNT, TO PUT IN ORDERROWSDETAILS + TOTAL COST
   orderList: Movie[] = [];
+  orderForm: UserDetails[] = [];
 
   productId: number = 0;
   amount: number = 1;
@@ -23,13 +24,15 @@ export class CheckOutComponent implements OnInit {
   totalMoviePrice: number = 0;
   orderRowsList: OrderRowsDetails[] = [];
 
-  orderToSend: OrderToSend = new OrderToSend(
-    this.createdByTest, //om jag consolloggar denna får den rätt värde men det skickas en tom sträng
-    this.totalMoviePrice, //samma med denna
-    this.orderRowsList
-  );
-
-  orderForm: UserDetails[] = [];
+  customerDetailsTest: UserDetails = {
+    fName: '',
+    lName: '',
+    email: '',
+    streetAddress: '',
+    city: '',
+    postcode: '',
+    country: '',
+  };
 
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
@@ -41,6 +44,30 @@ export class CheckOutComponent implements OnInit {
     country: ['', Validators.required],
   });
 
+  testForOrderData() {
+    const customerDetailsFromForm = this.customerDetails.value;
+
+    this.customerDetailsTest = new UserDetails(
+      customerDetailsFromForm.fName,
+      customerDetailsFromForm.lName,
+      customerDetailsFromForm.email,
+      customerDetailsFromForm.streetAddress,
+      customerDetailsFromForm.city,
+      customerDetailsFromForm.postcode,
+      customerDetailsFromForm.country
+    );
+  }
+
+  orderToSend: OrderToSend = new OrderToSend(
+    '',
+    0,
+    this.orderRowsList
+    // this.customerDetails.value.fName,
+    // // this.createdByTest, //om jag consolloggar denna får den rätt värde men det skickas en tom sträng
+    // this.totalMoviePrice, //samma med denna
+    // this.orderRowsList
+  );
+
   constructor(
     private http: HttpClient,
     private service: OrderService,
@@ -51,18 +78,15 @@ export class CheckOutComponent implements OnInit {
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
 
-    let userDetails: string = localStorage.getItem('userDetails') || '[]';
-    this.orderForm = JSON.parse(userDetails);
+    // let userDetails: string = localStorage.getItem('userDetails') || '[]';
+    // this.orderForm = JSON.parse(userDetails);
   }
 
   getUserDetails() {
     let createdBy: string = localStorage.getItem('userDetails') || '[]';
     this.createdByTest = createdBy; //Här hämtar jag user details och det blir rätt
-
-    console.log(this.createdByTest);
   }
 
-  //TO GET PRODUCTID AND PRICE
   getInfoFromMovie() {
     for (let i = 0; i < this.orderList.length; i++) {
       this.productId = this.orderList[i].id;
@@ -71,7 +95,6 @@ export class CheckOutComponent implements OnInit {
       this.orderRowsList.push(orderRows);
 
       this.totalMoviePrice = this.totalMoviePrice + this.orderList[i].price;
-      console.log(this.totalMoviePrice); //Här uppdateras priset
     }
   }
 
@@ -86,9 +109,18 @@ export class CheckOutComponent implements OnInit {
   }
 
   onSubmit() {
-    this.orderForm = this.customerDetails.value;
-    localStorage.setItem('userDetails', JSON.stringify(this.orderForm));
+    this.testForOrderData();
+
+    this.orderToSend = new OrderToSend(
+      this.customerDetailsTest.fName,
+      0,
+      this.orderRowsList
+    );
   }
+
+  //   this.orderForm = this.customerDetails.value;
+  //   localStorage.setItem('userDetails', JSON.stringify(this.orderForm));
+  // }
 }
 
 // createdByTest: UserDetails = new UserDetails(

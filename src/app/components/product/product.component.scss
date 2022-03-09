@@ -12,29 +12,51 @@
 }
 
 .movie-section {
-  width: 250px;
-  padding: 20px 10px;
-  height: 45 00px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 20px;
   border: 2px dashed rgb(130, 128, 128);
   border-radius: 10px;
-  margin: 10px;
-}
+  margin: 20px;
+  text-align: center;
 
-.movieImage {
-  width: 200px;
+  h2 {
+    display: block;
+  }
+
+  .movieImage {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+
+  button {
+    padding: 3px;
+    margin: 10px 30%;
+    ;
+  }
+
+
 }
 
 //STYLING FOR CATEGORIES SECTION
 .categories {
+  hr {
+    width: 60%;
+    margin: 10px auto;
+
+  }
+
   ul {
     display: flex;
     list-style: none;
     justify-content: center;
-    background-color: lightblue;
 
     .categoriesList {
       font-size: 1.2rem;
-      margin: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
       cursor: pointer;
 
     }

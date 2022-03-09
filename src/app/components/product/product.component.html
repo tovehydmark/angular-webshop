@@ -1,3 +1,13 @@
+<section class="search">
+
+    <label for="searchInput">Search: </label>
+    <input type="text" #searchTerm (input)="search(searchTerm.value)" id="searchInput">
+    <div *ngFor="let m of searchForMovie |async">
+        <p>{{m.name}}</p>
+    </div>
+
+</section>
+
 <section class="categories">
     <p>Choose by category: </p>
     <ul>

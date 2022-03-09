@@ -1,5 +1,4 @@
 export interface IProducts {
-  //getMovies(): void;
   id: number;
   name: string;
   description: string;

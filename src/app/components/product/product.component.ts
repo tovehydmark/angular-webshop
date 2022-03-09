@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  debounce,
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  Subject,
+  switchMap,
+} from 'rxjs';
 import { ICategories } from 'src/app/Interfaces.ts/ICategories';
+import { IProducts } from 'src/app/Interfaces.ts/IProducts';
 
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -23,20 +32,38 @@ export class ProductComponent implements OnInit {
   displayAllMovies: boolean = false;
   displayCategories: boolean = false;
 
+  //FOR MOVIE SEARCH
+  searchForMovie: Observable<IProducts[]> = new Observable();
+  searchTerm = new Subject<string>();
+
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {
+    this.displayAllMovies = true;
+
+    //FETCHING MOVIE API VIA SERVICES
     this.service.movies$.subscribe((movieData: Movie[]) => {
       this.movieList = movieData;
     });
     this.service.getMovies();
 
+    //FETCHING CATEGORIES API VIA SERVICES
     this.service.categoriesList$.subscribe((categoriesData: ICategories[]) => {
       this.categoriesList = categoriesData;
-      console.log(categoriesData);
     });
     this.service.getCategories();
 
+    //FETCHING SEARCH API VIA SERVICES
+    this.searchForMovie = this.searchTerm.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((searchTermFromUser) => {
+        return this.service.getSearchApi(searchTermFromUser);
+      })
+    );
+    this.searchForMovie.subscribe(() => {});
+
+    //LOCAL STORAGE
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
   }
@@ -66,5 +93,9 @@ export class ProductComponent implements OnInit {
         }
       }
     });
+  }
+
+  search(searchTermFromUser: string) {
+    this.searchTerm.next(searchTermFromUser);
   }
 }

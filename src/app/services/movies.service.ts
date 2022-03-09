@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { map, Observable, of, Subject } from 'rxjs';
 import { ICategories } from '../Interfaces.ts/ICategories';
 import { IProducts } from '../Interfaces.ts/IProducts';
 import { Movie } from '../models/Movie';
@@ -46,5 +46,14 @@ export class MoviesService {
       .subscribe((response: ICategories[]) => {
         this.categoriesList.next(response);
       });
+  }
+
+  getSearchApi(searchTerm: string): Observable<IProducts[]> {
+    return this.http
+      .get<IProducts[]>(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/search?=' +
+          searchTerm
+      )
+      .pipe(map((data: IProducts[]) => data));
   }
 }

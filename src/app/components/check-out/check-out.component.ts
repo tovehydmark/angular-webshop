@@ -91,8 +91,10 @@ export class CheckOutComponent implements OnInit {
     );
     this.service.confirmOrder(this.orderToSend);
 
-    //Empty order list
+    //Empty order list and customer form
     this.orderList = [];
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
+
+    this.customerDetails.reset();
   }
 }

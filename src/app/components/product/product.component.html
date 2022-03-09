@@ -1,23 +1,30 @@
 <section class="categories">
+    <p>Choose by category: </p>
     <ul>
-        <li *ngFor="let category of categoriesList" (click)="showCategory(category.id)">
+        <li *ngFor="let category of categoriesList" (click)="showCategory(category.id)"
+            (click)="!displayCategories; displayAllMovies = false">
             {{category.name}}
         </li>
     </ul>
-    <div *ngFor="let movieId of movieIdList">
-        {{movieId.name}}
-    </div>
+    <p (click)="displayAllMovies = true">View all movies</p>
+    <hr>
+
+    <ng-container *ngIf="!displayAllMovies">
+        <div *ngFor="let movieId of movieIdList">
+            {{movieId.name}}
+        </div>
+    </ng-container>
+
+    <hr>
 </section>
 
 
 
-
-
-<section class="movie-container">
+<section class="movie-container" *ngIf="displayAllMovies">
     <article class="movie-section" *ngFor="let movie of movieList; let i = index">
 
         <h2>{{movie.name}}</h2>
-        <img class="movieImage" src="{{movie.imageUrl}}" alt="Movie poster" *ngIf="displayMovieInfo">
+        <img class="movieImage" src="{{movie.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo">
         <p>Price: {{movie.price}}:-</p>
 
         <button (click)="addMovie(movie)">Add</button>

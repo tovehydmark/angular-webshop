@@ -20,6 +20,9 @@ export class ProductComponent implements OnInit {
 
   displayMovieInfo: boolean = false;
 
+  displayAllMovies: boolean = false;
+  displayCategories: boolean = false;
+
   constructor(private service: MoviesService) {}
 
   ngOnInit(): void {

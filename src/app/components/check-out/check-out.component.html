@@ -2,27 +2,85 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="customerDetails">
 
         <label for="fName">First name: </label>
-        <input type="text" formControlName="fName" id="fName">
-        <!-- <p *ngIf="customerDetails.get('fName')?.errors?.['required']">*Mandatory field</p> -->
+        <input type="text" formControlName="fName" id="fName" />
+
+        <div *ngIf="
+        (customerDetails.get('fName')?.invalid && customerDetails.get('fName')?.touched) ||
+        customerDetails.get('fName')?.dirty">
+
+            <p *ngIf="customerDetails.get('fName')?.errors?.['required']"> *Mandatory, please provide your name
+            </p>
+        </div>
+
+
 
         <label for="lName">Surname: </label>
-        <input type="text" formControlName="lName" id="lName">
+        <input type="text" formControlName="lName" id="lName" />
+
+        <div *ngIf="
+        (customerDetails.get('lName')?.invalid && customerDetails.get('lName')?.touched) ||
+        customerDetails.get('lName')?.dirty">
+
+            <p *ngIf="customerDetails.get('lName')?.errors?.['required']"> *Mandatory, please provide your surname
+            </p>
+        </div>
+
+
 
         <label for="email">Email: </label>
-        <input type="email" formControlName="email" id="email">
+        <input type="email" formControlName="email" id="email" />
+
+        <div *ngIf="
+        (customerDetails.get('email')?.invalid && customerDetails.get('email')?.touched) ||
+        customerDetails.get('email')?.dirty">
+
+            <p *ngIf="customerDetails.get('email')?.errors?.['required']"> *Mandatory, please provide your email
+                address </p>
+        </div>
+
+
 
         <label for="streetAddress">Street address: </label>
-        <input type="text" formControlName="streetAddress" id="streetAddress">
+        <input type="text" formControlName="streetAddress" id="streetAddress" />
+
+        <div *ngIf="
+        (customerDetails.get('streetAddress')?.invalid && customerDetails.get('streetAddress')?.touched) ||
+        customerDetails.get('streetAddress')?.dirty">
+
+            <p *ngIf="customerDetails.get('streetAddress')?.errors?.['required']"> *Mandatory, please provide street
+                address </p>
+        </div>
+
+
 
         <label for="city">City: </label>
-        <input type="text" formControlName="city" id="city">
+        <input type="text" formControlName="city" id="city" />
+
+        <div *ngIf="
+        (customerDetails.get('city')?.invalid && customerDetails.get('city')?.touched) ||
+        customerDetails.get('city')?.dirty">
+
+            <p *ngIf="customerDetails.get('city')?.errors?.['required']"> *Mandatory, please provide city
+            </p>
+        </div>
+
+
 
         <label for="postcode">Postcode: </label>
-        <input type="text" formControlName="postcode" id="postcode">
+        <input type="text" formControlName="postcode" id="postcode" />
+
+        <div *ngIf="
+        (customerDetails.get('postcode')?.invalid && customerDetails.get('postcode')?.touched) ||
+        customerDetails.get('postcode')?.dirty">
+
+            <p *ngIf="customerDetails.get('postcode')?.errors?.['required']"> *Mandatory, please provide postcode
+            </p>
+        </div>
+
+
 
         <label for="country">Country: </label>
-        <input type="text" formControlName="country" id="country">
-
+        <input type="text" formControlName="country" id="country" />
 
         <button type="submit">Place order</button>
     </form>

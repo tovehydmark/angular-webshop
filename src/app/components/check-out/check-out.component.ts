@@ -14,7 +14,6 @@ import { OrderService } from 'src/app/services/order.service';
 export class CheckOutComponent implements OnInit {
   orderList: Movie[] = [];
 
-  //FIXA DESSA SÅ DE STÄMMER
   productId: number = 0; //ProductId works
 
   amount: number = 0;
@@ -39,7 +38,7 @@ export class CheckOutComponent implements OnInit {
     streetAddress: ['', Validators.required],
     city: ['', Validators.required],
     postcode: ['', Validators.required],
-    country: ['', Validators.required],
+    country: '',
   });
 
   testForOrderData() {

@@ -4,10 +4,12 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductComponent } from './components/product/product.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: '', component: ProductComponent },
   { path: 'basket', component: BasketComponent },
+  { path: 'search', component: SearchComponent },
   { path: 'admin', component: AdminComponent },
   { path: '**', component: NotFoundComponent },
 ];

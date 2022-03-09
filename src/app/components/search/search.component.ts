@@ -9,7 +9,6 @@ import {
 import { IProducts } from 'src/app/Interfaces.ts/IProducts';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
-import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-search',

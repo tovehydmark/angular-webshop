@@ -1,1 +1,13 @@
-<p>search works!</p>
+<section class="search">
+
+    <label for="searchInput">Search: </label>
+    <input type="text" #searchTerm (keypress)="search(searchTerm.value)" id="searchInput">
+    {{searchTerm.value}}
+
+    <ng-container>
+        <div *ngFor="let m of searchForMovie |async" class="searchedForMovie">
+            <p>{{m.name}}</p>
+        </div>
+    </ng-container>
+
+</section>

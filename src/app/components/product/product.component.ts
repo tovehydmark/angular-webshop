@@ -34,9 +34,9 @@ export class ProductComponent implements OnInit {
 
   clearSearchTerm: boolean = false;
 
-  //FOR MOVIE SEARCH
-  searchForMovie: Observable<IProducts[]> = new Observable();
-  searchTerm = new Subject<string>();
+  // //FOR MOVIE SEARCH
+  // searchForMovie: Observable<IProducts[]> = new Observable();
+  // searchTerm = new Subject<string>();
 
   constructor(private service: MoviesService) {}
 
@@ -56,15 +56,15 @@ export class ProductComponent implements OnInit {
     });
     this.service.getCategories();
 
-    //SEARCH
-    this.searchForMovie = this.searchTerm.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((searchTermFromUser) => {
-        return this.service.getSearchApi(searchTermFromUser);
-      })
-    );
-    this.searchForMovie.subscribe(() => {});
+    // //SEARCH
+    // this.searchForMovie = this.searchTerm.pipe(
+    //   debounceTime(300),
+    //   distinctUntilChanged(),
+    //   switchMap((searchTermFromUser) => {
+    //     return this.service.getSearchApi(searchTermFromUser);
+    //   })
+    // );
+    // this.searchForMovie.subscribe(() => {});
 
     //LOCAL STORAGE
     let orderList: string = localStorage.getItem('orderList') || '[]';
@@ -98,10 +98,10 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  search(searchTermFromUser: string) {
-    this.searchTerm.next(searchTermFromUser);
-    if (searchTermFromUser.length < 1) {
-      console.log('mindre än 1');
-    }
-  }
+  // search(searchTermFromUser: string) {
+  //   this.searchTerm.next(searchTermFromUser);
+  //   if (searchTermFromUser.length < 1) {
+  //     console.log('mindre än 1');
+  //   }
+  // }
 }

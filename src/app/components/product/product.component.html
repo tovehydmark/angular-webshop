@@ -4,13 +4,20 @@
             {{category.name}}
         </li>
     </ul>
+    <div *ngFor="let movieId of movieIdList">
+        {{movieId.name}}
+    </div>
 </section>
+
+
+
+
 
 <section class="movie-container">
     <article class="movie-section" *ngFor="let movie of movieList; let i = index">
 
         <h2>{{movie.name}}</h2>
-        <img class="movieImage" src="{{movie.imageUrl}}" alt="">
+        <img class="movieImage" src="{{movie.imageUrl}}" alt="Movie poster" *ngIf="displayMovieInfo">
         <p>Price: {{movie.price}}:-</p>
 
         <button (click)="addMovie(movie)">Add</button>

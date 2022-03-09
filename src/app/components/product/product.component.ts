@@ -16,7 +16,9 @@ export class ProductComponent implements OnInit {
 
   categoriesList: ICategories[] = [];
 
-  movieIdList: number[] = [];
+  movieIdList: Movie[] = [];
+
+  displayMovieInfo: boolean = false;
 
   constructor(private service: MoviesService) {}
 
@@ -51,13 +53,15 @@ export class ProductComponent implements OnInit {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
   }
 
-  showCategory(chosenCategory: number) {
+  showCategory(chosenCategoryId: number) {
     this.movieIdList = [];
 
-    for (let i = 0; i < this.movieList.length; i++) {
-      chosenCategory = this.movieList[i].id;
-      this.movieIdList.push(chosenCategory);
-      console.log(this.movieIdList);
-    }
+    this.movieList.forEach((m) => {
+      for (let i = 0; i < m.productCategory.length; i++) {
+        if (m.productCategory[i].categoryId === chosenCategoryId) {
+          this.movieIdList.push(m);
+        }
+      }
+    });
   }
 }

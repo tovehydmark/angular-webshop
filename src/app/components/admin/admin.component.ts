@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
   //VARFÖR MÅSTE JAG DUBBELKLICKA FÖR ATT DEN SKA UPPDATERAS?
   removeOrder(orderToDelete: number) {
     this.service.deleteOrder(orderToDelete);
-    this.getOrderList();
   }
 
   getOrderList() {

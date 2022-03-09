@@ -50,6 +50,6 @@ export class OrderService {
           orderToDelete +
           '?companyId=18'
       )
-      .subscribe(() => {});
+      .subscribe(() => this.getOrders());
   }
 }

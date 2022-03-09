@@ -1,10 +1,15 @@
 <section>
     <div *ngFor="let order of orderData; let i = index" class="orderLayout">
         <h1>Order id: {{order.id}}</h1>
+        <hr>
         <p>Created: {{order.created}}</p>
+        <hr>
         <p>Customer details: {{order.createdBy}}</p>
+        <hr>
         <p>Payment method: {{order.paymentMethod}}</p>
+        <hr>
         <p>Total price: {{order.totalPrice}}</p>
+        <hr>
 
         <div *ngFor="let o of order.orderRows">
             <p>Product id: {{o.productId}}, amount: {{o.amount}}</p>

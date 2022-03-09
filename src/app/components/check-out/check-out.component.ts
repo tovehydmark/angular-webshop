@@ -16,7 +16,9 @@ export class CheckOutComponent implements OnInit {
 
   productId: number = 0; //ProductId works
 
-  amount: number = 0;
+  amount: number = 1;
+
+  thanksForOrder: boolean = false;
 
   totalMoviePrice: number = 0;
   orderRowsList: OrderRowsDetails[] = [];
@@ -75,9 +77,14 @@ export class CheckOutComponent implements OnInit {
     }
   }
 
+  thanksForYourOrder() {
+    this.thanksForOrder = true;
+  }
+
   onSubmit() {
     this.testForOrderData();
     this.getInfoFromMovie();
+    this.thanksForYourOrder();
 
     this.orderToSend = new OrderToSend(
       'Name: ' +

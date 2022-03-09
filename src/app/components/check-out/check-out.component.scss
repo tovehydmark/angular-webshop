@@ -20,3 +20,21 @@ label {
   float: left;
   width: 100px;
 }
+
+.thanksContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+
+  p {
+    justify-content: center;
+    display: inline-block;
+    font-size: 1.5rem;
+    background-color: aquamarine;
+    padding: 1rem;
+    margin: 20px 0 0 0;
+  }
+
+
+}

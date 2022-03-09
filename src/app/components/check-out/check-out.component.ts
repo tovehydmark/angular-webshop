@@ -65,10 +65,6 @@ export class CheckOutComponent implements OnInit {
   }
 
   getInfoFromMovie() {
-    // let variable = this.orderList.filter((movie) => {
-    //   console.log(movie.id);
-    // });
-
     for (let i = 0; i < this.orderList.length; i++) {
       this.productId = this.orderList[i].id;
 
@@ -84,13 +80,26 @@ export class CheckOutComponent implements OnInit {
     this.getInfoFromMovie();
 
     this.orderToSend = new OrderToSend(
-      this.userDetails.fName,
+      'Name: ' +
+        this.userDetails.fName +
+        ', Surname: ' +
+        this.userDetails.lName +
+        ', Email: ' +
+        this.userDetails.email +
+        ', Address: ' +
+        this.userDetails.streetAddress +
+        ', ' +
+        this.userDetails.city +
+        ', ' +
+        this.userDetails.postcode +
+        ', ' +
+        this.userDetails.country,
       this.totalMoviePrice,
       this.orderRowsList
     );
     this.service.confirmOrder(this.orderToSend);
 
-    //Empty order list and customer form
+    //Clear order list and customer form
     this.orderList = [];
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
 

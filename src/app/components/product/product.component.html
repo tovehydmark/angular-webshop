@@ -11,8 +11,6 @@
 
     </ul>
 
-
-
     <ng-container *ngIf="!displayAllMovies">
 
         <section class="movie-container">
@@ -21,7 +19,7 @@
 
                 <h2>{{movieId.name}}</h2>
 
-                <img class="movieImage" src="{{movieId.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo">
+                <img src="{{movieId.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo" class="movieImage">
 
                 <p>Price: {{movieId.price}}:-</p>
 

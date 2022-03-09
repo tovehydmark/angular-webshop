@@ -4,10 +4,16 @@
     <input type="text" #searchTerm (keypress)="search(searchTerm.value)" id="searchInput">
     {{searchTerm.value}}
 
-    <ng-container>
-        <div *ngFor="let m of searchForMovie |async" class="searchedForMovie">
+    <section class="movie-container">
+        <div *ngFor="let m of searchForMovie |async let i=index" class="movie-section" class="movie-section">
             <p>{{m.name}}</p>
+            <img src="{{m.imageUrl}}" alt="Movie poster" class="movieImage">
+
+            <p>Price: {{m.price}}:-</p>
+
+            <button (click)="addMovie(m)">Add</button>
+            <button (click)="removeMovie(i)">Remove</button>
         </div>
-    </ng-container>
+    </section>
 
 </section>

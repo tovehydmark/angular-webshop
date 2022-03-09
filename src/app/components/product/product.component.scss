@@ -14,11 +14,11 @@
 .movie-section {
   display: flex;
   flex-direction: column;
-  width: 200px;
-  padding: 20px;
+  width: 250px;
+  padding: 10px;
   border: 2px dashed rgb(130, 128, 128);
   border-radius: 10px;
-  margin: 20px;
+  margin: 10px;
   text-align: center;
 
   h2 {
@@ -26,18 +26,15 @@
   }
 
   .movieImage {
-    width: 200px;
     margin-bottom: 20px;
   }
 
 
   button {
     padding: 3px;
-    margin: 10px 30%;
+    margin: 5px 30%;
     ;
   }
-
-
 }
 
 //STYLING FOR CATEGORIES SECTION

@@ -1,3 +1,8 @@
+.searchedForMovie {
+  background-color: yellow;
+}
+
+
 .movie-container {
   display: flex;
   flex-wrap: wrap;
@@ -22,4 +27,27 @@
 
 .movieImage {
   width: 200px;
+}
+
+//STYLING FOR CATEGORIES SECTION
+.categories {
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    background-color: lightblue;
+
+    .categoriesList {
+      font-size: 1.2rem;
+      // margin-right: 20px;
+      // margin-left: 20px;
+      // margin-bottom: 20px;
+      margin: 20px;
+
+    }
+  }
+
+  .categoriesList:hover {
+    text-decoration: underline;
+  }
 }

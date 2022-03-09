@@ -51,7 +51,8 @@ export class MoviesService {
   getSearchApi(searchTerm: string): Observable<IProducts[]> {
     return this.http
       .get<IProducts[]>(
-        'https://medieinstitutet-wie-products.azurewebsites.net/api/search?=' +
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/search' +
+          '?=' +
           searchTerm
       )
       .pipe(map((data: IProducts[]) => data));

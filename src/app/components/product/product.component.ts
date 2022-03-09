@@ -32,6 +32,8 @@ export class ProductComponent implements OnInit {
   displayAllMovies: boolean = false;
   displayCategories: boolean = false;
 
+  clearSearchTerm: boolean = false;
+
   //FOR MOVIE SEARCH
   searchForMovie: Observable<IProducts[]> = new Observable();
   searchTerm = new Subject<string>();
@@ -41,19 +43,20 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.displayAllMovies = true;
 
-    //FETCHING MOVIE API VIA SERVICES
+    //FETCHING MOVIE API, CATEGORIES API AND SEARCH API VIA SERVICES
+    //MOVIES
     this.service.movies$.subscribe((movieData: Movie[]) => {
       this.movieList = movieData;
     });
     this.service.getMovies();
 
-    //FETCHING CATEGORIES API VIA SERVICES
+    // CATEGORIES
     this.service.categoriesList$.subscribe((categoriesData: ICategories[]) => {
       this.categoriesList = categoriesData;
     });
     this.service.getCategories();
 
-    //FETCHING SEARCH API VIA SERVICES
+    //SEARCH
     this.searchForMovie = this.searchTerm.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -97,5 +100,8 @@ export class ProductComponent implements OnInit {
 
   search(searchTermFromUser: string) {
     this.searchTerm.next(searchTermFromUser);
+    if (searchTermFromUser.length < 1) {
+      console.log('mindre än 1');
+    }
   }
 }

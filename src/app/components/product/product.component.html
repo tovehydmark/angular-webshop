@@ -1,37 +1,55 @@
 <section class="search">
 
     <label for="searchInput">Search: </label>
-    <input type="text" #searchTerm (input)="search(searchTerm.value)" id="searchInput">
-    <div *ngFor="let m of searchForMovie |async">
-        <p>{{m.name}}</p>
-    </div>
+    <input type="text" #searchTerm (keypress)="search(searchTerm.value)" id="searchInput">
+    {{searchTerm.value}}
+
+    <ng-container>
+        <div *ngFor="let m of searchForMovie |async" class="searchedForMovie">
+            <p>{{m.name}}</p>
+        </div>
+    </ng-container>
 
 </section>
 
 <section class="categories">
-    <p>Choose by category: </p>
+
     <ul>
         <li *ngFor="let category of categoriesList" (click)="showCategory(category.id)"
-            (click)="!displayCategories; displayAllMovies = false">
+            (click)="!displayCategories; displayAllMovies = false" class="categoriesList">
+
             {{category.name}}
         </li>
+        <li (click)="displayAllMovies = true" class="categoriesList">View all movies</li>
+
     </ul>
-    <p (click)="displayAllMovies = true">View all movies</p>
-    <hr>
+
+
 
     <ng-container *ngIf="!displayAllMovies">
-        <div *ngFor="let movieId of movieIdList">
-            {{movieId.name}}
-        </div>
-    </ng-container>
 
-    <hr>
+        <section class="movie-container">
+
+            <div *ngFor="let movieId of movieIdList; let i = index" class="movie-section">
+
+                <h2>{{movieId.name}}</h2>
+
+                <img class="movieImage" src="{{movieId.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo">
+
+                <p>Price: {{movieId.price}}:-</p>
+
+                <button (click)="addMovie(movieId)">Add</button>
+                <button (click)="removeMovie(i)">Remove</button>
+
+            </div>
+        </section>
+    </ng-container>
 </section>
 
 
 
-<section class="movie-container" *ngIf="displayAllMovies">
-    <article class="movie-section" *ngFor="let movie of movieList; let i = index">
+<section *ngIf="displayAllMovies" class="movie-container">
+    <article *ngFor="let movie of movieList; let i = index" class="movie-section">
 
         <h2>{{movie.name}}</h2>
         <img class="movieImage" src="{{movie.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo">

@@ -1,15 +1,22 @@
 footer {
   position: fixed;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   color: #2D2B2A;
 
-  p {
+
+  div {
+    display: flex;
+    justify-content: space-between;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    // background-color: #f3efeb;
-    background-color: #9b5b02;
+    background-color: #440462;
     color: white;
 
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
+
 }

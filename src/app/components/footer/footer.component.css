@@ -1,2 +1,2 @@
-footer{position:fixed;bottom:0;width:100vw;color:#2D2B2A}footer p{padding-top:1rem;padding-bottom:1rem;background-color:#9b5b02;color:white}
+footer{position:fixed;bottom:0;width:100%;color:#2D2B2A}footer div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;background-color:#440462;color:white}footer div p{padding-left:10px;padding-right:10px}
 /*# sourceMappingURL=footer.component.css.map */

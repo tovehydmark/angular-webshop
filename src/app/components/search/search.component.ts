@@ -49,10 +49,6 @@ export class SearchComponent implements OnInit {
     this.saveToLS();
   }
 
-  removeMovie(i: number) {
-    this.orderList.splice(i, 1);
-    this.saveToLS();
-  }
   saveToLS() {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
   }

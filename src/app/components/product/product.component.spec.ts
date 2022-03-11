@@ -8,9 +8,8 @@ describe('ProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,11 @@ describe('ProductComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should toggle movie information', () => {
+    expect(component.displayMovieInfo.valueOf).toBe(false);
+    component.toggleMovieInfo();
+    expect(component.displayMovieInfo.valueOf).toBe(true);
   });
 });

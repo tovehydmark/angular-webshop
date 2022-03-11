@@ -27,9 +27,7 @@ export class OrderService {
         orderToSend,
         { headers: httpHeaders }
       )
-      .subscribe((data) => {
-        console.log(data);
-      });
+      .subscribe((data) => {});
   }
 
   //FETCH ORDERS FROM ORDER API

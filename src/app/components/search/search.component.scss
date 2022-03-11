@@ -1,3 +1,25 @@
+#searchForMovieContainer {
+  div {
+    display: flex;
+    justify-content: center;
+
+    label {
+      margin-right: 7px;
+      font-size: 1.2rem;
+    }
+
+    input {
+      font-size: 1.1rem;
+      border-radius: 5px;
+    }
+  }
+
+  hr {
+    width: 50%;
+    margin: 10px auto;
+  }
+}
+
 .movie-container {
   display: flex;
   flex-wrap: wrap;
@@ -8,18 +30,28 @@
 
   h2 {
     font-size: 1.2rem;
+    display: block;
   }
 }
 
 .movie-section {
+  display: flex;
+  flex-direction: column;
   width: 250px;
-  padding: 20px 10px;
+  padding: 10px;
   height: 45 00px;
   border: 2px dashed rgb(130, 128, 128);
   border-radius: 10px;
   margin: 10px;
-}
+  text-align: center;
 
-.movieImage {
-  width: 200px;
+  .movieImage {
+    margin-bottom: 20px;
+
+  }
+
+  button {
+    padding: 3px;
+    margin: 5px 30%;
+  }
 }

@@ -1,4 +1,5 @@
 <section class="categories">
+
     <hr>
     <ul>
         <li *ngFor="let category of categoriesList" (click)="showCategory(category.id)"
@@ -7,10 +8,10 @@
             {{category.name}}
         </li>
         <li (click)="displayAllMovies = true" class="categoriesList">View all movies</li>
-
-
     </ul>
     <hr>
+
+
     <ng-container *ngIf="!displayAllMovies">
 
         <section class="movie-container">
@@ -19,10 +20,11 @@
 
                 <h2>{{movieId.name}}</h2>
 
-                <img src="{{movieId.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo" class="movieImage">
-
+                <img src="{{movieId.imageUrl}}" alt="Movie poster">
+                <div class="movieImage" *ngIf="displayMovieInfo">{{movieId.description}}</div>
                 <p>Price: {{movieId.price}}:-</p>
 
+                <button (click)="toggleMovieInfo()">View info</button>
                 <button (click)="addMovie(movieId)">Add</button>
                 <button (click)="removeMovie(i)">Remove</button>
 
@@ -37,11 +39,14 @@
     <article *ngFor="let movie of movieList; let i = index" class="movie-section">
 
         <h2>{{movie.name}}</h2>
-        <img class="movieImage" src="{{movie.imageUrl}}" alt="Movie poster" *ngIf="!displayMovieInfo">
+
+        <img src="{{movie.imageUrl}}" alt="Movie poster">
+        <div class="movieImage" *ngIf="displayMovieInfo">{{movie.description}}</div>
         <p>Price: {{movie.price}}:-</p>
 
-        <button (click)="addMovie(movie)">Add</button>
 
+        <button (click)="toggleMovieInfo()">View info</button>
+        <button (click)="addMovie(movie)">Add</button>
         <button (click)="removeMovie(i)">Remove</button>
 
     </article>

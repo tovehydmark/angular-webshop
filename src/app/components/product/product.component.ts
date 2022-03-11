@@ -10,11 +10,8 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class ProductComponent implements OnInit {
   movieList: Movie[] = [];
-
   orderList: Movie[] = [];
-
   categoriesList: ICategories[] = [];
-
   movieIdList: Movie[] = [];
 
   displayMovieInfo: boolean = false;
@@ -42,6 +39,10 @@ export class ProductComponent implements OnInit {
     //LOCAL STORAGE
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
+  }
+
+  toggleMovieInfo() {
+    this.displayMovieInfo = !this.displayMovieInfo;
   }
 
   addMovie(movie: Movie) {

@@ -17,6 +17,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class SearchComponent implements OnInit {
   orderList: Movie[] = [];
+  displayMovieInfo: boolean = false;
 
   //FOR MOVIE SEARCH
   searchForMovie: Observable<IProducts[]> = new Observable();
@@ -37,6 +38,9 @@ export class SearchComponent implements OnInit {
     //LOCAL STORAGE
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
+  }
+  toggleMovieInfo() {
+    this.displayMovieInfo = !this.displayMovieInfo;
   }
 
   addMovie(movie: Movie) {

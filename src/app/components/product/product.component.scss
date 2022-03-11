@@ -8,6 +8,8 @@
 
   h2 {
     font-size: 1.2rem;
+    display: block;
+
   }
 }
 
@@ -21,14 +23,9 @@
   margin: 10px;
   text-align: center;
 
-  h2 {
-    display: block;
-  }
-
   .movieImage {
     margin-bottom: 20px;
   }
-
 
   button {
     padding: 3px;

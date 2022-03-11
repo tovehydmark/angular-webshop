@@ -1,6 +1,16 @@
-<section *ngIf="!inCheckOut">
+<section *ngIf="!inCheckOut" class="basket-section">
+
     <div>
-        <h1>Your basket</h1>
+        <hr>
+        <h2>Your basket</h2>
+        <hr>
+
+    </div>
+
+    <div class="basket-container">
+
+
+
         <p *ngIf="myOrderList.length == 0">Your basket is empty.</p>
 
         <ul *ngIf="myOrderList.length !==0">
@@ -14,6 +24,5 @@
 
     </div>
 </section>
-<hr>
 
 <app-check-out *ngIf="inCheckOut"></app-check-out>

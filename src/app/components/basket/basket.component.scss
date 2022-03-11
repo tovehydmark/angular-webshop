@@ -1,14 +1,23 @@
-section {
+.basket-section {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
+  align-items: center;
+
+  hr {
+    width: 100%;
+    margin: 10px auto;
+  }
 
 
-  div {
+  .basket-container {
     border: 2px dashed rgb(130, 128, 128);
     width: 30%;
     border-radius: 10px;
     margin: 10px;
     padding: 20px;
+
 
     h1 {
       margin-bottom: 10px;

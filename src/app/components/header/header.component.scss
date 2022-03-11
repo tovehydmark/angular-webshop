@@ -1,10 +1,9 @@
 header {
   margin: 0;
   background-color: #f09516;
-  // background-color: #f3efeb;
-
   text-align: center;
-
+  position: sticky;
+  top: 0;
 
   h1 {
     padding: 1rem;
@@ -26,16 +25,12 @@ nav {
       padding-bottom: 1rem;
       font-size: 1.2rem;
 
-
       a {
         color: #2D2B2A;
         text-decoration: none;
       }
     }
-
   }
-
-
 }
 
 .active {

@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
   movieIdList: Movie[] = [];
 
   displayMovieInfo: boolean = false;
+  changeButtonText: string = 'View';
 
   displayAllMovies: boolean = false;
   displayCategories: boolean = false;
@@ -43,6 +44,10 @@ export class ProductComponent implements OnInit {
 
   toggleMovieInfo() {
     this.displayMovieInfo = !this.displayMovieInfo;
+
+    if (this.displayMovieInfo == true) {
+      this.changeButtonText = 'Hide';
+    } else this.changeButtonText = 'View';
   }
 
   addMovie(movie: Movie) {

@@ -1,3 +1,5 @@
+<!-- PRINTS MOVIES BASED ON CATEGORIES -->
+
 <section class="categories">
 
     <hr>
@@ -6,7 +8,9 @@
             (click)="!displayCategories; displayAllMovies = false" class="categoriesList">
 
             {{category.name}}
+
         </li>
+
         <li (click)="displayAllMovies = true" class="categoriesList">View all movies</li>
     </ul>
     <hr>
@@ -21,7 +25,9 @@
                 <h2>{{movieId.name}}</h2>
 
                 <img src="{{movieId.imageUrl}}" alt="Movie poster">
+
                 <div class="movieImage" *ngIf="displayMovieInfo">{{movieId.description}}</div>
+
                 <p>Price: {{movieId.price}}:-</p>
 
                 <button (click)="toggleMovieInfo()">View info</button>
@@ -33,14 +39,18 @@
 </section>
 
 
+<!-- PRINTS ALL MOVIES -->
 
 <section *ngIf="displayAllMovies" class="movie-container">
+
     <article *ngFor="let movie of movieList; let i = index" class="movie-section">
 
         <h2>{{movie.name}}</h2>
 
         <img src="{{movie.imageUrl}}" alt="Movie poster">
+
         <div class="movieImage" *ngIf="displayMovieInfo">{{movie.description}}</div>
+
         <p>Price: {{movie.price}}:-</p>
 
 

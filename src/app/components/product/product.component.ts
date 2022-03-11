@@ -26,7 +26,6 @@ export class ProductComponent implements OnInit {
     this.displayAllMovies = true;
 
     //FETCHING MOVIE AND CATEGORIES API VIA SERVICES
-    //MOVIES
     this.service.movies$.subscribe((movieData: Movie[]) => {
       this.movieList = movieData;
     });
@@ -57,6 +56,7 @@ export class ProductComponent implements OnInit {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
     this.saveToLS();
   }
+
   //LOCAL STORAGE
   saveToLS() {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));

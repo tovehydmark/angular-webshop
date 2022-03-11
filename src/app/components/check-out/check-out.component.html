@@ -1,13 +1,15 @@
-<div [hidden]="!thanksForOrder">
+<!-- THANK YOU MESSAGE TO BE SHOWN AFTER ORDER -->
 
+<div [hidden]="!thanksForOrder">
 
     <div class="thanks-for-your-order">
         <p>Thanks for your order! <br>
             An order confirmation has been sent to your email. </p>
     </div>
-
-
 </div>
+
+
+<!-- CUSTOMER DETAILS FORM WITH VALIDATORS AND ERROR MESSAGES IF NOT PROPERLY FILLED -->
 
 <div class="form-container">
     <form (ngSubmit)="onSubmit()" [formGroup]="customerDetails">
@@ -25,7 +27,6 @@
         </div>
 
 
-
         <label for="lName">Surname: </label>
         <input type="text" formControlName="lName" id="lName" />
 
@@ -37,7 +38,6 @@
                 provide your surname
             </p>
         </div>
-
 
 
         <label for="email">Email: </label>
@@ -53,7 +53,6 @@
         </div>
 
 
-
         <label for="streetAddress">Street address: </label>
         <input type="text" formControlName="streetAddress" id="streetAddress" />
 
@@ -65,7 +64,6 @@
                 please provide street
                 address </p>
         </div>
-
 
 
         <label for="city">City: </label>
@@ -81,7 +79,6 @@
         </div>
 
 
-
         <label for="postcode">Postcode: </label>
         <input type="text" formControlName="postcode" id="postcode" />
 
@@ -93,7 +90,6 @@
                 provide postcode
             </p>
         </div>
-
 
 
         <label for="country">Country: </label>

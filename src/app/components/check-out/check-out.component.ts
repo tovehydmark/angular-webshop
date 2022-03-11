@@ -13,15 +13,13 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class CheckOutComponent implements OnInit {
   orderList: Movie[] = [];
-
-  productId: number = 0; //ProductId works
-
+  productId: number = 0;
   amount: number = 1;
-
   thanksForOrder: boolean = false;
-
   totalMoviePrice: number = 0;
   orderRowsList: OrderRowsDetails[] = [];
+
+  completeOrderToSend: OrderToSend = new OrderToSend('', 0, this.orderRowsList);
 
   userDetails: UserDetails = {
     fName: '',
@@ -33,6 +31,8 @@ export class CheckOutComponent implements OnInit {
     country: '',
   };
 
+  //CREATING USER FORM FOR CUSTOMER DETAILS
+
   customerDetails = this.fb.group({
     fName: ['', Validators.required],
     lName: ['', Validators.required],
@@ -43,7 +43,7 @@ export class CheckOutComponent implements OnInit {
     country: '',
   });
 
-  testForOrderData() {
+  userDataFromOrderForm() {
     const customerDetailsFromForm = this.customerDetails.value;
 
     this.userDetails = new UserDetails(
@@ -57,36 +57,43 @@ export class CheckOutComponent implements OnInit {
     );
   }
 
-  orderToSend: OrderToSend = new OrderToSend('', 0, this.orderRowsList);
-
   constructor(private service: OrderService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    //LOCAL STORAGE
+
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
   }
+
+  //SUBTRACTING INFORMATION FROM MOVIES FOR USE IN HTML FILE
 
   getInfoFromMovie() {
     for (let i = 0; i < this.orderList.length; i++) {
       this.productId = this.orderList[i].id;
 
       let orderRows = new OrderRowsDetails(this.productId, this.amount);
+
       this.orderRowsList.push(orderRows);
 
       this.totalMoviePrice = this.totalMoviePrice + this.orderList[i].price;
     }
   }
 
+  //FUNCTION TO DISPLAY THANK YOU MESSAGE AFTER PURCHASE
+
   thanksForYourOrder() {
     this.thanksForOrder = true;
   }
 
+  //FUNCTIONS TO BE RUN WHEN USER PRESS SUBMIT BUTTON IN FORM
+
   onSubmit() {
-    this.testForOrderData();
+    this.userDataFromOrderForm();
     this.getInfoFromMovie();
     this.thanksForYourOrder();
 
-    this.orderToSend = new OrderToSend(
+    this.completeOrderToSend = new OrderToSend(
       'Name: ' +
         this.userDetails.fName +
         ', Surname: ' +
@@ -104,10 +111,12 @@ export class CheckOutComponent implements OnInit {
       this.totalMoviePrice,
       this.orderRowsList
     );
-    this.service.confirmOrder(this.orderToSend);
+    this.service.confirmOrder(this.completeOrderToSend);
 
-    //Clear order list and customer form
+    //CLEARS USER FORM AND ORDER LIST IN LOCAL STORAGE
+
     this.orderList = [];
+
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
 
     this.customerDetails.reset();

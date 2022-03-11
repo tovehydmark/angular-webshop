@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,GAAG,AAAC,CACF,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,WAAW,CAAE,MAAM,CACnB,UAAU,CAAE,IAAI,CASjB,AAbD,AAME,GANC,CAMD,CAAC,AAAC,CACA,UAAU,CAAE,IAAI,CACjB,AARH,AAUE,GAVC,CAUD,CAAC,AAAA,QAAQ,AAAC,CACR,KAAK,CAAE,KAAK,CACb",
     "sources": [
         "not-found.component.scss"
     ],

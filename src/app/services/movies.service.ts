@@ -21,6 +21,7 @@ export class MoviesService implements IMovieService {
 
   constructor(private http: HttpClient) {}
 
+  //FETCHES DATA FROM THE MOVIE API
   getMovies(): void {
     this.http
       .get<IProducts[]>(
@@ -31,14 +32,17 @@ export class MoviesService implements IMovieService {
       });
   }
 
+  //LETS USER ADD ORDERS TO THE BASKET
   addMovieFromUser(movie: Movie) {
     this.myOrderList.push(movie);
   }
 
+  //LLETS USER REMOVE ORDERS FROM THE BASKET
   removeMovieFromUser(i: number) {
     this.myOrderList.splice(i, 1);
   }
 
+  //FETCHES DATA FROM THE CATEGORIES API
   getCategories(): void {
     this.http
       .get<ICategories[]>(
@@ -49,6 +53,7 @@ export class MoviesService implements IMovieService {
       });
   }
 
+  //FETCHES DATA FROM THE SEARCH API
   getSearchApi(searchTerm: string): Observable<IProducts[]> {
     return this.http
       .get<IProducts[]>(

@@ -16,11 +16,12 @@ export class AdminComponent implements OnInit {
     this.getOrderList();
   }
 
-  //VARFÖR MÅSTE JAG DUBBELKLICKA FÖR ATT DEN SKA UPPDATERAS?
+  //ENABLES ADMIN TO REMOVE ORDER
   removeOrder(orderToDelete: number) {
     this.service.deleteOrder(orderToDelete);
   }
 
+  //GETS THE LIST OF ORDERS FROM THE ORDER API
   getOrderList() {
     this.service.fetchedOrders$.subscribe((orderData: IMyOrders[]) => {
       this.orderData = orderData;

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { IMyOrders } from '../Interfaces.ts/IMyOrders';
 import { OrderToSend } from '../models/OrderToSend';
 
@@ -43,6 +43,7 @@ export class OrderService {
       });
   }
 
+  //ENABLES FOR ADMIN TO REMOVE ORDERS
   deleteOrder(orderToDelete: number) {
     this.http
       .delete(

@@ -19,13 +19,13 @@ export class SearchComponent implements OnInit {
   orderList: Movie[] = [];
   displayMovieInfo: boolean = false;
 
-  //FOR MOVIE SEARCH
   searchForMovie: Observable<IProducts[]> = new Observable();
   searchTerm = new Subject<string>();
+
   constructor(private MoviesService: MoviesService) {}
 
   ngOnInit(): void {
-    //SEARCH
+    //FETCHES SEARCH API VIA MOVIE-SERVICES
     this.searchForMovie = this.searchTerm.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -39,24 +39,25 @@ export class SearchComponent implements OnInit {
     let orderList: string = localStorage.getItem('orderList') || '[]';
     this.orderList = JSON.parse(orderList);
   }
+
+  //SHOWS/HIDES INFORMATION ABOUT MOVIES
   toggleMovieInfo() {
     this.displayMovieInfo = !this.displayMovieInfo;
   }
 
+  //ENABLES CUSTOMER TO ADD MOVIE ON THE SEARCH PAGE
   addMovie(movie: Movie) {
     this.orderList.push(movie);
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
     this.saveToLS();
   }
 
+  // LOCAL STORAGE
   saveToLS() {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
   }
 
   search(searchTermFromUser: string) {
     this.searchTerm.next(searchTermFromUser);
-    if (searchTermFromUser.length < 1) {
-      console.log('mindre än 1');
-    }
   }
 }

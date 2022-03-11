@@ -9,13 +9,18 @@
         <hr>
     </div>
 
+    <!-- PRINTS THE MOVIES BASED ON THE SEARH MADE BY THE USER -->
+
     <section class="movie-container">
+
         <div *ngFor="let m of searchForMovie |async let i=index" class="movie-section" class="movie-section">
 
             <h2>{{m.name}}</h2>
 
             <img src="{{m.imageUrl}}" alt="Movie poster" class="movieImage">
+
             <div class="movieImage" *ngIf="displayMovieInfo">{{m.description}}</div>
+
             <p>Price: {{m.price}}:-</p>
 
             <button (click)="toggleMovieInfo()">View info</button>
@@ -23,5 +28,4 @@
 
         </div>
     </section>
-
 </section>

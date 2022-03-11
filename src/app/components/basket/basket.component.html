@@ -1,3 +1,5 @@
+<!-- DISPLAYS THE CUSTOMER ORDER/EMPTY BASKET -->
+
 <section *ngIf="!inCheckOut" class="basket-section">
 
     <div>
@@ -23,4 +25,5 @@
     </div>
 </section>
 
+<!-- BUTTON TO TAKE THE CUSTOMER TO CHECK-OUT COMPONENT  -->
 <app-check-out *ngIf="inCheckOut"></app-check-out>

@@ -14,11 +14,16 @@ input {
   width: 50%;
   margin: 10px;
   font-size: 1.2rem;
+  padding: 5px;
 }
 
 label {
   float: left;
-  width: 100px;
+  width: 125px;
+}
+
+.mandatory-field {
+  margin-left: 120px;
 }
 
 .thanksContainer {

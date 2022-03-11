@@ -19,7 +19,8 @@
         (customerDetails.get('fName')?.invalid && customerDetails.get('fName')?.touched) ||
         customerDetails.get('fName')?.dirty">
 
-            <p *ngIf="customerDetails.get('fName')?.errors?.['required']"> *Mandatory, please provide your name
+            <p *ngIf="customerDetails.get('fName')?.errors?.['required']" class="mandatory-field"> *Mandatory, please
+                provide your name
             </p>
         </div>
 
@@ -32,7 +33,8 @@
         (customerDetails.get('lName')?.invalid && customerDetails.get('lName')?.touched) ||
         customerDetails.get('lName')?.dirty">
 
-            <p *ngIf="customerDetails.get('lName')?.errors?.['required']"> *Mandatory, please provide your surname
+            <p *ngIf="customerDetails.get('lName')?.errors?.['required']" class="mandatory-field"> *Mandatory, please
+                provide your surname
             </p>
         </div>
 
@@ -45,7 +47,8 @@
         (customerDetails.get('email')?.invalid && customerDetails.get('email')?.touched) ||
         customerDetails.get('email')?.dirty">
 
-            <p *ngIf="customerDetails.get('email')?.errors?.['required']"> *Mandatory, please provide your email
+            <p *ngIf="customerDetails.get('email')?.errors?.['required']" class="mandatory-field"> *Mandatory, please
+                provide your email
                 address </p>
         </div>
 
@@ -58,7 +61,8 @@
         (customerDetails.get('streetAddress')?.invalid && customerDetails.get('streetAddress')?.touched) ||
         customerDetails.get('streetAddress')?.dirty">
 
-            <p *ngIf="customerDetails.get('streetAddress')?.errors?.['required']"> *Mandatory, please provide street
+            <p *ngIf="customerDetails.get('streetAddress')?.errors?.['required']" class="mandatory-field"> *Mandatory,
+                please provide street
                 address </p>
         </div>
 
@@ -71,7 +75,8 @@
         (customerDetails.get('city')?.invalid && customerDetails.get('city')?.touched) ||
         customerDetails.get('city')?.dirty">
 
-            <p *ngIf="customerDetails.get('city')?.errors?.['required']"> *Mandatory, please provide city
+            <p *ngIf="customerDetails.get('city')?.errors?.['required']" class="mandatory-field"> *Mandatory, please
+                provide city
             </p>
         </div>
 
@@ -84,7 +89,8 @@
         (customerDetails.get('postcode')?.invalid && customerDetails.get('postcode')?.touched) ||
         customerDetails.get('postcode')?.dirty">
 
-            <p *ngIf="customerDetails.get('postcode')?.errors?.['required']"> *Mandatory, please provide postcode
+            <p *ngIf="customerDetails.get('postcode')?.errors?.['required']" class="mandatory-field"> *Mandatory, please
+                provide postcode
             </p>
         </div>
 

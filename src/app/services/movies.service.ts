@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, Subject } from 'rxjs';
 import { ICategories } from '../Interfaces.ts/ICategories';
+import { IMovieService } from '../Interfaces.ts/IMovieService';
 import { IProducts } from '../Interfaces.ts/IProducts';
 import { Movie } from '../models/Movie';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MoviesService {
+export class MoviesService implements IMovieService {
   private movies = new Subject<IProducts[]>();
-  movies$ = this.movies.asObservable();
+  public movies$: Observable<Movie[]> = this.movies.asObservable();
 
   private myOrderList: Movie[] = [];
   myOrderList$: Observable<Movie[]> = of(this.myOrderList);

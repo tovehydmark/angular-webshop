@@ -20,3 +20,12 @@ button:hover {
   border-bottom-color: #66616c;
   border-right-color: #898291;
 }
+
+button:focus {
+  border-color: rgb(18, 14, 14);
+}
+
+input:focus {
+  border-color: rgb(18, 14, 14);
+
+}

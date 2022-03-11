@@ -1,2 +1,2 @@
-body{font-family:'Libre Baskerville', serif}button{background-color:#ffffff;border-radius:5px;cursor:pointer;font-family:'Libre Baskerville', serif}button:hover{background-color:#b2b2b6;border-top-color:#c9b9b9;border-left-color:#dfd3d3;border-bottom-color:#66616c;border-right-color:#898291}
+body{font-family:'Libre Baskerville', serif}button{background-color:#ffffff;border-radius:5px;cursor:pointer;font-family:'Libre Baskerville', serif}button:hover{background-color:#b2b2b6;border-top-color:#c9b9b9;border-left-color:#dfd3d3;border-bottom-color:#66616c;border-right-color:#898291}button:focus{border-color:#120e0e}input:focus{border-color:#120e0e}
 /*# sourceMappingURL=styles.css.map */

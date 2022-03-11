@@ -47,7 +47,9 @@ export class ProductComponent implements OnInit {
 
     if (this.displayMovieInfo == true) {
       this.changeButtonText = 'Hide';
-    } else this.changeButtonText = 'View';
+    } else if (this.displayMovieInfo == false) {
+      this.changeButtonText = 'View';
+    }
   }
 
   addMovie(movie: Movie) {
@@ -55,7 +57,7 @@ export class ProductComponent implements OnInit {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
     this.saveToLS();
   }
-
+  //LOCAL STORAGE
   saveToLS() {
     localStorage.setItem('orderList', JSON.stringify(this.orderList));
   }

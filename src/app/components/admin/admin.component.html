@@ -6,6 +6,7 @@
 
 <section class="order-section">
 
+    <p *ngIf="orderData.length == 0">There are no orders</p>
 
     <div *ngFor="let order of orderData; let i = index" class="orderLayout">
         <h1>Order id: {{order.id}}</h1>

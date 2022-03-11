@@ -6,18 +6,19 @@
         <hr>
     </div>
 
-    <div class="basket-container">
+    <p *ngIf="myOrderList.length == 0">Your basket is empty.</p>
 
-        <p *ngIf="myOrderList.length == 0">Your basket is empty.</p>
+    <div *ngIf="myOrderList.length !== 0" class="basket-container">
 
-        <ul *ngIf="myOrderList.length !==0">
+        <ul>
             <li *ngFor="let m of myOrderList; let i = index">
                 {{ m.name }}
                 <button (click)="removeMovie(i)">X</button>
             </li>
-
         </ul>
-        <button (click)="goToCheckout()" class="goToCheckoutBtn">Go to check-out</button>
+
+        <button (click)="goToCheckout()" class="goToCheckoutBtn">Go to
+            check-out</button>
 
     </div>
 </section>

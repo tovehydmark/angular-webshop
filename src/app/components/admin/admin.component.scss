@@ -1,4 +1,19 @@
-section {
+.order-heading {
+  text-align: center;
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 10px auto;
+    font-weight: 400;
+  }
+
+  hr {
+    width: 115px;
+    margin: 10px auto;
+  }
+}
+
+.order-section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

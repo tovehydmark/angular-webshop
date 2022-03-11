@@ -1,10 +1,11 @@
-<section>
-    <div>
-        <hr>
-        <h2>Your orders</h2>
-        <hr>
+<div class="order-heading">
+    <hr>
+    <h2>Your orders</h2>
+    <hr>
+</div>
 
-    </div>
+<section class="order-section">
+
 
     <div *ngFor="let order of orderData; let i = index" class="orderLayout">
         <h1>Order id: {{order.id}}</h1>
